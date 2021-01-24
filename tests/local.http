@@ -13,7 +13,7 @@ Content-Type: application/json
 }
 
 ### Send CallBack event
-###{{notifyRequest.response.body.id}}
+# Update the instanceId with the instanceId from the SendNotificationActivity log.
 @instanceId=7722f1371290488c96535193790943c6:0 
 @eventName=CallBack
 @taskHub=DFUseCasesv1
