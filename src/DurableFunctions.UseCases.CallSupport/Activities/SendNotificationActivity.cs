@@ -11,7 +11,7 @@ namespace DurableFunctions.UseCases
             [ActivityTrigger] SendNotificationInput input,
             ILogger logger)
         {
-            logger.LogInformation($"Phone: {input.PhoneNumber}, Attempt: {input.Attempt}, InstanceId: {input.OrchestratorInstanceId}");
+            logger.LogInformation($"=== Calling: {input.PhoneNumber}, Attempt: {input.Attempt}, InstanceId: {input.OrchestratorInstanceId}. ===");
 
             return;
         }

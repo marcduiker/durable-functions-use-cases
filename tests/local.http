@@ -8,7 +8,7 @@ Content-Type: application/json
         "456",
         "789"],
     "message" : "HALP!",
-    "waitTimeForEscalation" : 300,
+    "waitTimeForEscalation" : 90,
     "maxNotificationAttempts" : 3
 }
 

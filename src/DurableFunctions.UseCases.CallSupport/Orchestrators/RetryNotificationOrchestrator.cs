@@ -22,10 +22,11 @@ namespace DurableFunctions.UseCases
                 PhoneNumber = input.PhoneNumber};
             await context.CallActivityAsync(nameof(SendNotificationActivity), activityInput);
             
-            // Orchestrator will wait until Call event is received or maxWaitTimeBetweenCalls is passed, defaults to false.
+            // Orchestrator will wait until the event is received or waitTimeBetweenRetry is passed (not very accurate), defaults to false.
             var callBackResult = await context.WaitForExternalEvent<bool>(EventNames.CallBack, waitTimeBetweenRetry, false);
             if (!callBackResult && input.NotificationAttemptCount < input.MaxNotificationAttempts)
             {
+                // Call has not been answered, let's try again!
                 input.NotificationAttemptCount += 1;
                 context.ContinueAsNew(input);
             }

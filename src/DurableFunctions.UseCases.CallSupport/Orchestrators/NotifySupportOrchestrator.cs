@@ -28,6 +28,7 @@ namespace DurableFunctions.UseCases
             
             if (!notificationResult.CallBackReceived && input.PhoneNumbers.Last() != retryNotificationInput.PhoneNumber)
             {
+                // Calls have not been answered, let's try the next number.
                 input.PhoneNumberIndex++;
                 logger.LogInformation($"=== Next Number {input.PhoneNumbers[input.PhoneNumberIndex]} ===");
                 context.ContinueAsNew(input);
