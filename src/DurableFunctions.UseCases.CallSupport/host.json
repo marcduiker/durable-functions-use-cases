@@ -2,7 +2,10 @@
     "version": "2.0",
     "extensions": {
         "durableTask": {
-            "hubName": "%TaskHubName%"
+            "hubName": "%TaskHubName%",
+            "storageProvider": {
+              "maxQueuePollingInterval": "00:00:05"
+            }
         }
     },
     "logging": {
