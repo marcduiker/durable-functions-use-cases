@@ -1,0 +1,27 @@
+# @name notifyRequest
+POST http://localhost:7071/api/NotifySupportHttpClient
+Content-Type: application/json
+
+{
+    "phoneNumbers": [
+        "123",
+        "456",
+        "789"],
+    "message" : "HALP!",
+    "waitTimeForEscalation" : 300,
+    "maxNotificationAttempts" : 3
+}
+
+### Send CallBack event
+###{{notifyRequest.response.body.id}}
+@instanceId=7722f1371290488c96535193790943c6:0 
+@eventName=CallBack
+@taskHub=DFUseCasesv1
+POST http://localhost:7071/runtime/webhooks/durabletask/instances/{{instanceId}}/raiseEvent/{{eventName}}
+    ?taskHub={{taskHub}}
+    &connection=Storage
+    &code=U0gR6nOWK0ovQKFHWUdQeyAi3jpFmTQPyngadzs1J5KW5oyUQWlnqQ==
+Content-Type: application/json
+
+true
+
