@@ -38,17 +38,5 @@ namespace DurableFunctions.UseCases
 
             return result;
         }
-
-        private TimeSpan GetWaitTime(RetryNotificationInput input)
-        {
-            if (input.MaxNotificationAttempts == 1)
-            {
-                return TimeSpan.FromSeconds(input.WaitTimeForEscalation);
-            }
-            else
-            {
-                return TimeSpan.FromSeconds(input.WaitTimeForEscalation / (input.MaxNotificationAttempts - 1));
-            }
-        }
     }
 }

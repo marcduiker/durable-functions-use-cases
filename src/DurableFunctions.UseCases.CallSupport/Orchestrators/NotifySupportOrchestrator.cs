@@ -30,12 +30,12 @@ namespace DurableFunctions.UseCases
             {
                 // Calls have not been answered, let's try the next number.
                 input.PhoneNumberIndex++;
-                logger.LogInformation($"=== Next Number {input.PhoneNumbers[input.PhoneNumberIndex]} ===");
+                logger.LogInformation($"=== Next Number={input.PhoneNumbers[input.PhoneNumberIndex]} ===");
                 context.ContinueAsNew(input);
             }
             else
             {
-                logger.LogInformation($"=== Completed {nameof(NotifySupportOrchestrator)} for {notificationResult.PhoneNumber} with callback received: {notificationResult.CallBackReceived} on attempt {notificationResult.Attempt}. ===");
+                logger.LogInformation($"=== Completed {nameof(NotifySupportOrchestrator)} for {notificationResult.PhoneNumber} with callback received={notificationResult.CallBackReceived} on attempt={notificationResult.Attempt}. ===");
             }
         }
         
