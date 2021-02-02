@@ -12,7 +12,7 @@
 			"type": "process",
 			"problemMatcher": "$msCompile",
 			"options": {
-				"cwd": "${workspaceFolder}/src\\DurableFunctions.UseCases.CallSupport"
+				"cwd": "${workspaceFolder}/src\\DurableFunctions.UseCases.NotifySupport"
 			}
 		},
 		{
@@ -31,7 +31,7 @@
 			},
 			"problemMatcher": "$msCompile",
 			"options": {
-				"cwd": "${workspaceFolder}/src\\DurableFunctions.UseCases.CallSupport"
+				"cwd": "${workspaceFolder}/src\\DurableFunctions.UseCases.NotifySupport"
 			}
 		},
 		{
@@ -47,7 +47,7 @@
 			"type": "process",
 			"problemMatcher": "$msCompile",
 			"options": {
-				"cwd": "${workspaceFolder}/src\\DurableFunctions.UseCases.CallSupport"
+				"cwd": "${workspaceFolder}/src\\DurableFunctions.UseCases.NotifySupport"
 			}
 		},
 		{
@@ -64,14 +64,14 @@
 			"dependsOn": "clean release",
 			"problemMatcher": "$msCompile",
 			"options": {
-				"cwd": "${workspaceFolder}/src\\DurableFunctions.UseCases.CallSupport"
+				"cwd": "${workspaceFolder}/src\\DurableFunctions.UseCases.NotifySupport"
 			}
 		},
 		{
 			"type": "func",
 			"dependsOn": "build",
 			"options": {
-				"cwd": "${workspaceFolder}/src\\DurableFunctions.UseCases.CallSupport/bin/Debug/netcoreapp3.1"
+				"cwd": "${workspaceFolder}/src\\DurableFunctions.UseCases.NotifySupport/bin/Debug/netcoreapp3.1"
 			},
 			"command": "host start",
 			"isBackground": true,

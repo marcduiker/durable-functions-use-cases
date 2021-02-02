@@ -1,6 +1,6 @@
-namespace DurableFunctions.UseCases
+namespace DurableFunctions.UseCases.NotifySupport
 {
-    public class RetryNotificationResult
+    public class NotificationOrchestratorResult
     {
         public int Attempt { get; set; }
         public bool CallBackReceived { get; set; }

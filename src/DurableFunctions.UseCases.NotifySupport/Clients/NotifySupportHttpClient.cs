@@ -4,8 +4,9 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.Azure.WebJobs.Extensions.DurableTask;
 using System.Net.Http;
+using System;
 
-namespace DurableFunctions.UseCases
+namespace DurableFunctions.UseCases.NotifySupport
 {
     public static class NotifySupportHttpClient
     {
@@ -18,11 +19,18 @@ namespace DurableFunctions.UseCases
             [DurableClient] IDurableClient client,
             ILogger logger)
         {
-            var input = await message.Content.ReadAsAsync<NotifySupportInput>();
+            var clientInput = await message.Content.ReadAsAsync<NotifySupportClientInput>();
+            var waitTimeForEscalationInSeconds = int.Parse(Environment.GetEnvironmentVariable("WaitTimeForEscalationInSeconds") ?? "60");
+            var maxNotificationAttempts = int.Parse(Environment.GetEnvironmentVariable("MaxNotificationAttempts") ?? "3");
+            
+            var orchestratorInput = NotifySupportOrchestratorInputBuilder.Build(
+                clientInput,
+                maxNotificationAttempts,
+                waitTimeForEscalationInSeconds);
 
             string instanceId = await client.StartNewAsync(
                nameof(NotifySupportOrchestrator),
-               input);
+               orchestratorInput);
 
             return client.CreateCheckStatusResponse(message, instanceId);
         }

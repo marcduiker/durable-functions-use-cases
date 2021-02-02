@@ -1,4 +1,4 @@
-namespace DurableFunctions.UseCases
+namespace DurableFunctions.UseCases.NotifySupport
 {
     public static class EventNames
     {
