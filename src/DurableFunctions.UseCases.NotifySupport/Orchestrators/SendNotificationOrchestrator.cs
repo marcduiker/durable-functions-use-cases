@@ -1,23 +1,22 @@
 using System;
 using System.Threading.Tasks;
-using DurableFunctions.UseCases.NotifySupport;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.DurableTask;
 using Microsoft.Extensions.Logging;
 
 namespace DurableFunctions.UseCases.NotifySupport
 {
-    public class NotificationOrchestrator
+    public class SendNotificationOrchestrator
     {
-        [FunctionName(nameof(NotificationOrchestrator))]
-        public async Task<NotificationOrchestratorResult> Run(
+        [FunctionName(nameof(SendNotificationOrchestrator))]
+        public async Task<SendNotificationOrchestratorResult> Run(
           [OrchestrationTrigger] IDurableOrchestrationContext context,
           ILogger logger)
         {
-            var input = context.GetInput<NotificationOrchestratorInput>();
+            var input = context.GetInput<SendNotificationOrchestratorInput>();
             var waitTimeBetweenRetry = TimeSpan.FromSeconds(input.WaitTimeForEscalationInSeconds / input.MaxNotificationAttempts);
             
-            var activityInput = new SendNotificationInput { 
+            var activityInput = new SendNotificationActivityInput { 
                 Attempt = input.NotificationAttemptCount,
                 Message = input.Message,
                 PhoneNumber = input.SupportContact.PhoneNumber};
@@ -31,7 +30,7 @@ namespace DurableFunctions.UseCases.NotifySupport
             await context.CallActivityAsync(nameof(SendNotificationActivity), activityInput);
             
             // Orchestrator will wait until the event is received or waitTimeBetweenRetry is passed (not very accurate), defaults to false.
-            var callBackResult = await context.WaitForExternalEvent<bool>(EventNames.CallBack, waitTimeBetweenRetry, false);
+            var callBackResult = await context.WaitForExternalEvent<bool>(EventNames.Callback, waitTimeBetweenRetry, false);
             if (!callBackResult && input.NotificationAttemptCount < input.MaxNotificationAttempts)
             {
                 // Call has not been answered, let's try again!
@@ -39,10 +38,10 @@ namespace DurableFunctions.UseCases.NotifySupport
                 context.ContinueAsNew(input);
             }
 
-            var result = new NotificationOrchestratorResult {
+            var result = new SendNotificationOrchestratorResult {
                 Attempt  = input.NotificationAttemptCount,
                 PhoneNumber = input.SupportContact.PhoneNumber,
-                CallBackReceived = callBackResult };
+                CallbackReceived = callBackResult };
 
             return result;
         }

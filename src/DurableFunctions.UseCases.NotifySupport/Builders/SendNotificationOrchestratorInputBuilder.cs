@@ -1,12 +1,12 @@
 namespace DurableFunctions.UseCases.NotifySupport
 {
-    public static class NotificationOrchestratorInputBuilder
+    public static class SendNotificationOrchestratorInputBuilder
     {
-        public static NotificationOrchestratorInput Build(
+        public static SendNotificationOrchestratorInput Build(
             NotifySupportOrchestratorInput orchestratorInput,
             int supportContactIndex)
         {
-            return new NotificationOrchestratorInput 
+            return new SendNotificationOrchestratorInput 
             {
                 MaxNotificationAttempts = orchestratorInput.MaxNotificationAttempts,
                 Message = orchestratorInput.Message,

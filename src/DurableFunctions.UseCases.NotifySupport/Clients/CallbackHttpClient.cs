@@ -8,9 +8,9 @@ using Microsoft.Extensions.Logging;
 
 namespace DurableFunctions.UseCases.NotifySupport
 {
-    public static class WebhookHttpClient
+    public static class CallbackHttpClient
     {
-        [FunctionName(nameof(WebhookHttpClient))]
+        [FunctionName(nameof(CallbackHttpClient))]
         public static async Task<IActionResult> Run(
             [HttpTrigger(
                 AuthorizationLevel.Function,
@@ -26,7 +26,7 @@ namespace DurableFunctions.UseCases.NotifySupport
             {
                 await client.RaiseEventAsync(
                     instanceEntity.EntityState.InstanceId,
-                    EventNames.CallBack,
+                    EventNames.Callback,
                     true);
             }
             else

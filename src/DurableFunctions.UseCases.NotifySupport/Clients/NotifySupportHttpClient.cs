@@ -20,8 +20,8 @@ namespace DurableFunctions.UseCases.NotifySupport
             ILogger logger)
         {
             var clientInput = await message.Content.ReadAsAsync<NotifySupportClientInput>();
-            var waitTimeForEscalationInSeconds = int.Parse(Environment.GetEnvironmentVariable("WaitTimeForEscalationInSeconds") ?? "60");
-            var maxNotificationAttempts = int.Parse(Environment.GetEnvironmentVariable("MaxNotificationAttempts") ?? "3");
+            var waitTimeForEscalationInSeconds = int.TryParse(Environment.GetEnvironmentVariable("WaitTimeForEscalationInSeconds"), out int waitTime) ? waitTime : 60;
+            var maxNotificationAttempts = int.TryParse(Environment.GetEnvironmentVariable("MaxNotificationAttempts"), out int maxAttempts) ? maxAttempts : 3;
             
             var orchestratorInput = NotifySupportOrchestratorInputBuilder.Build(
                 clientInput,

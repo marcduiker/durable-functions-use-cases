@@ -1,9 +1,9 @@
 namespace DurableFunctions.UseCases.NotifySupport
 {
-    public class NotificationOrchestratorResult
+    public class SendNotificationActivityInput
     {
         public int Attempt { get; set; }
-        public bool CallBackReceived { get; set; }
+        public string Message { get; set; }
         public string PhoneNumber { get; set; }
     }
 }

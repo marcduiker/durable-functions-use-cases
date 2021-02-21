@@ -11,11 +11,11 @@ namespace DurableFunctions.UseCases.NotifySupport
         public SupportContactEntity(string team, string name, string phoneNumber, int order)
         {
             PartitionKey = team;
-            Team = team;
+            RowKey = phoneNumber;
             Name = name;
-            RowKey = name;
             PhoneNumber = phoneNumber;
             Order = order;
+            Team = team;
         }
 
         public string Name { get; set; }

@@ -8,7 +8,7 @@ namespace DurableFunctions.UseCases.NotifySupport
     {
         [FunctionName(nameof(SendNotificationActivity))]
         public void Run(
-            [ActivityTrigger] SendNotificationInput input,
+            [ActivityTrigger] SendNotificationActivityInput input,
             ILogger logger)
         {
             logger.LogInformation($"=== Calling {input.PhoneNumber}, Attempt={input.Attempt}, Message={input.Message} ===");

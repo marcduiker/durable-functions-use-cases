@@ -1,6 +1,6 @@
 namespace DurableFunctions.UseCases.NotifySupport
 {
-    public class NotificationOrchestratorInput
+    public class SendNotificationOrchestratorInput
     {
         public int MaxNotificationAttempts { get; set; }
         public string  Message { get; set; }

@@ -26,15 +26,15 @@ namespace DurableFunctions.UseCases.NotifySupport
                 input.SupportContacts = supportContacts.ToArray();
             }
 
-            var notificationOrchestratorInput = NotificationOrchestratorInputBuilder.Build(
+            var notificationOrchestratorInput = SendNotificationOrchestratorInputBuilder.Build(
                 input,
                 input.SupportContactIndex);
             
-            var notificationResult = await context.CallSubOrchestratorAsync<NotificationOrchestratorResult>(
-                    nameof(NotificationOrchestrator),
+            var notificationResult = await context.CallSubOrchestratorAsync<SendNotificationOrchestratorResult>(
+                    nameof(SendNotificationOrchestrator),
                     notificationOrchestratorInput);
             
-            if (!notificationResult.CallBackReceived && input.SupportContacts.Last() != notificationOrchestratorInput.SupportContact)
+            if (!notificationResult.CallbackReceived && input.SupportContacts.Last() != notificationOrchestratorInput.SupportContact)
             {
                 // Calls have not been answered, let's try the next number.
                 input.SupportContactIndex++;
@@ -43,7 +43,7 @@ namespace DurableFunctions.UseCases.NotifySupport
             }
             else
             {
-                logger.LogInformation($"=== Completed {nameof(NotifySupportOrchestrator)} for {notificationResult.PhoneNumber} with callback received={notificationResult.CallBackReceived} on attempt={notificationResult.Attempt}. ===");
+                logger.LogInformation($"=== Completed {nameof(NotifySupportOrchestrator)} for {notificationResult.PhoneNumber} with callback received={notificationResult.CallbackReceived} on attempt={notificationResult.Attempt}. ===");
             }
         }
         

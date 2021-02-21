@@ -2,6 +2,6 @@ namespace DurableFunctions.UseCases.NotifySupport
 {
     public static class EventNames
     {
-        public static string CallBack = "CallBack";
+        public static string Callback = "Callback";
     }
 }
