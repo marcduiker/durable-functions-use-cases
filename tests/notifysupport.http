@@ -1,0 +1,15 @@
+# @name notifyRequest
+POST http://localhost:7071/api/NotifySupportHttpClient
+Content-Type: application/json
+
+{
+    "message" : "Everything is NOT fine!",
+    "severity" : 1
+}
+
+### Send Callback event
+POST http://localhost:7071/api/CallbackHttpClient
+Content-Type: application/json
+
+"+31622222222"
+

@@ -6,6 +6,6 @@
     "FUNCTIONS_WORKER_RUNTIME": "dotnet",
     "SupportContactTableName" : "SupportContacts",
     "MaxNotificationAttempts" : 3,
-    "WaitTimeForEscalationInSeconds" : 60
+    "WaitTimeForEscalationInSeconds" : 180
   }
 }
