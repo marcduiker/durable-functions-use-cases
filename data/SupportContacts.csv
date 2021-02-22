@@ -1,0 +1,4 @@
+PartitionKey,RowKey,Timestamp,Name,Name@type,Team,Team@type,PhoneNumber,PhoneNumber@type,Order,Order@type
+A,+31611111111,2021-02-22T21:10:04.713Z,Angela,Edm.String,A,Edm.String,+31611111111,Edm.String,1,Edm.String
+A,+31622222222,2021-02-22T21:10:13.583Z,Brian,Edm.String,A,Edm.String,+31622222222,Edm.String,2,Edm.String
+A,+31633333333,2021-02-22T21:10:18.310Z,Carol,Edm.String,A,Edm.String,+31633333333,Edm.String,3,Edm.String
