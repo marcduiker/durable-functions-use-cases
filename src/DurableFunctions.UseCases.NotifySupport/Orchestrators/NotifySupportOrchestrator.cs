@@ -21,7 +21,7 @@ namespace DurableFunctions.UseCases.NotifySupport
                 // Let's get the support contacts from storage.
                 var supportContacts = await context.CallActivityAsync<IEnumerable<SupportContactEntity>>(
                     nameof(GetSupportContactActivity),
-                    null);
+                    "A");
 
                 input.SupportContacts = supportContacts.ToArray();
             }
