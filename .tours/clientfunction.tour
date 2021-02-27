@@ -1,0 +1,27 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "3 - Client Function",
+  "steps": [
+    {
+      "file": "lessons/durablefunctions.md",
+      "description": "The `[DurableClient]` binding indicates this function is a client function.",
+      "line": 74
+    },
+    {
+      "file": "lessons/durablefunctions.md",
+      "description": "The `IDurableClient` client context contains methods to manage orchestrator functions. In this case the `StartNewAsync` method is used to start a new instance of the `UpdateUserScoreOrchestrator` orchestrator function.",
+      "line": 79
+    },
+    {
+      "file": "lessons/durablefunctions.md",
+      "description": "The first parameter of `StartNewAsync` is the name of the orchestrator function to be started.",
+      "line": 80
+    },
+    {
+      "file": "lessons/durablefunctions.md",
+      "description": "The second parameter of `StartNewAsync` is the input for the orchestrator.",
+      "line": 81
+    }
+  ],
+  "ref": "main"
+}
