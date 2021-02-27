@@ -11,7 +11,7 @@ namespace DurableFunctions.UseCases
         [FunctionName(nameof(GetSupportContactActivity))]
         public IEnumerable<SupportContactEntity> Run(
             [ActivityTrigger] string team,
-            [Table("%SupportContactTableName%")] CloudTable cloudTable)
+            [Table("%SupportContactTableName%", Connection ="SupportContactStorage")] CloudTable cloudTable)
         {
              var teamFilter = new TableQuery<SupportContactEntity>()
                 .Where(
