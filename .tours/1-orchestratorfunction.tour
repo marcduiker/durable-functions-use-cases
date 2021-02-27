@@ -5,22 +5,30 @@
     {
       "file": "lessons/durablefunctions.md",
       "description": "The `[OrchestrationTrigger]` is a binding that indicates this function is an orchestrator function.",
-      "line": 28,
       "selection": {
         "start": {
           "line": 28,
-          "character": 28
+          "character": 5
         },
         "end": {
           "line": 28,
-          "character": 56
+          "character": 27
         }
       }
     },
     {
       "file": "lessons/durablefunctions.md",
       "description": "The `GetInput` method on `IDurableOrchestrationContext` is used to retrieve the input that is passed in when this orchestrator instance was started. In this case the expected input is of type `string`.",
-      "line": 31
+      "selection": {
+        "start": {
+          "line": 31,
+          "character": 26
+        },
+        "end": {
+          "line": 31,
+          "character": 34
+        }
+      }
     },
     {
       "file": "lessons/durablefunctions.md",
