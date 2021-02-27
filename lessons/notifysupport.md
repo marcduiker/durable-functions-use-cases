@@ -21,7 +21,7 @@ The serverless application you'll write, need to do the following things:
     }
     ```
 
-2. Support contact information must be read from Table Storage. A [data export](../data/SupportContacts.csv) has been made available which can be imported in a `SupportContacts` table. Only the people in **Team A** are part of the support schedule.
+2. Support contact information must be read from Table Storage. A [data export](../data/SupportContacts.csv) has been made available which can be imported in a `SupportContacts` table. Only the people in **Team A** are part of the support schedule. For more info about *Table Storage bindings* see [this Azure Functions University lesson](https://github.com/marcduiker/azure-functions-university/blob/main/lessons/table-dotnet.md).
 
 3. The notification process must start with the first support contact in the list (ordered ascending by the `Order` field), if the contact do not respond within 5 minutes the next contact should be notified. This continues until there's no-one available in the support contact list. The time should be a configurable value.
 
