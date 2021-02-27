@@ -37,7 +37,7 @@ The serverless application you'll write, need to do the following things:
     }
     ```
 
-7. For times sake, the actual notification functionality (making phone calls or send text messsages (incl callbacks) can be faked for this lab. If you do have the time, you could try Twillio or Azure Communication Services.
+7. For times sake, the actual notification functionality (making phone calls or sending text messages (incl callbacks) can be faked for this lab. If you do have the time, you could try Twilio or Azure Communication Services.
 
 ## Durable Functions Theory
 
