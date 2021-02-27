@@ -44,6 +44,11 @@
     },
     {
       "file": "lessons/durablefunctions.md",
+      "description": "The second argument is the input for the activity function. Activity functions only support one input parameter. ",
+      "line": 35
+    },
+    {
+      "file": "lessons/durablefunctions.md",
       "description": "Activity functions do not require an output parameter. When the activity output is `void` (or `Task` for async activities) no output type is required for the `CallActivityAsync` method.",
       "line": 37
     },
@@ -51,56 +56,6 @@
       "file": "lessons/durablefunctions.md",
       "description": "Due to the replay functionality of the orchestrator function there are limits of what code is allowed inside an orchestrator. See [orchestrator code constraints](https://docs.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-code-constraints) for additional info.",
       "line": 40
-    },
-    {
-      "file": "lessons/durablefunctions.md",
-      "description": "The second argument is the input for the activity function. Activity functions only support one input parameter. ",
-      "line": 35
-    },
-    {
-      "file": "lessons/durablefunctions.md",
-      "description": "The `[ActivityTrigger]` is a binding that indicates the function is an activity function.\r\nThe input type can be a simple type or serializable POCO. \r\nActivity functions only support one input parameter.",
-      "line": 54,
-      "selection": {
-        "start": {
-          "line": 54,
-          "character": 5
-        },
-        "end": {
-          "line": 54,
-          "character": 22
-        }
-      }
-    },
-    {
-      "file": "lessons/durablefunctions.md",
-      "description": "There are no restrictions on what you can execute inside an activity function. Usually there is communication with other APIs and databases, or performing CPU intensive work.",
-      "line": 57
-    },
-    {
-      "file": "lessons/durablefunctions.md",
-      "description": "Any regular Azure Function can be a Durable Function client function. In this case an HttpTrigger function is used.",
-      "line": 70
-    },
-    {
-      "file": "lessons/durablefunctions.md",
-      "description": "The `[DurableClient]` binding indicates this function is a client function.",
-      "line": 74
-    },
-    {
-      "file": "lessons/durablefunctions.md",
-      "description": "The `IDurableClient` client context contains methods to manage orhestrator functions. In this case the `StartNewAsync` method is used to start a new instance of the `UpdateUserScoreOrchestrator` orchestrator function.",
-      "line": 79
-    },
-    {
-      "file": "lessons/durablefunctions.md",
-      "description": "The first parameter of `StartNewAsync` is the name of the orchestrator function to be started.",
-      "line": 80
-    },
-    {
-      "file": "lessons/durablefunctions.md",
-      "description": "The second parameter of `StartNewAsync` is the input for the orchestrator.",
-      "line": 81
     }
   ],
   "ref": "main"
