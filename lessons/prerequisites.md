@@ -41,4 +41,4 @@ We strongly suggest you create a new folder (local git repository) and use this 
 You should be good to go now!
 
 ---
-[🔼 Main README](../README.md)
+[🔼 Main README](../README.md) | [Hands-on Lab ▶](notifysupport.md)

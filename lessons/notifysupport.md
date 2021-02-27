@@ -2,7 +2,7 @@
 
 ## Goal
 
-The goal of this lab is to write a Function App which responds to incidents (posted as HTTP request) and notifies team members which are part of a support schedule.
+The goal of this lab is to write a Function App which responds to incidents (posted as HTTP requests) and notifies team members which are part of a support schedule.
 
 ## Prerequisites
 
@@ -21,7 +21,7 @@ The serverless application you'll write, need to do the following things:
     }
     ```
 
-2. Support contact information must be read from Table Storage. A [data export](../data/SupportContacts.csv) has been made available which can be imported in a `SupportContacts` table. Only the people in team A are part of the support schedule.
+2. Support contact information must be read from Table Storage. A [data export](../data/SupportContacts.csv) has been made available which can be imported in a `SupportContacts` table. Only the people in **Team A** are part of the support schedule.
 
 3. The notification process must start with the first support contact in the list (ordered ascending by the `Order` field), if they do not respond within 5 minutes the next contact should be notified. This continues until there's no-one available in the support contact list. Make this time configurable.
 
@@ -37,17 +37,23 @@ The serverless application you'll write, need to do the following things:
     }
     ```
 
+7. For times sake, the actual notification functionality (making phone calls or send text messsages (incl callbacks) can be faked for this lab. If you do have the time, you could try Twillio or Azure Communication Services.
+
 ## Durable Functions Theory
 
-Please familiarize yourself with some Durable Functions theory and code samples. This are the building blocks for the solution.
+Please familiarize yourself with some Durable Functions theory and code samples. These are the building blocks for the solution.
 
-- [Client, Orchestrator & Activity](durablefunctions.md)
+- [Client, Orchestrator & Activity functions](durablefunctions.md)
 - [Suborchestrations](suborchestrations.md)
 - [Events](events.md)
 - [Eternal orchestrations](eternalorchestrations.md)
-- [Entities](entities.md)
+- [Stateful Entities](statefulentities.md)
 
 ## Build it!
 
 Now it's time to build your solution.
-// TODO add tips
+
+If you need some tips, check [this page](tips.md).
+
+---
+[🔼 Main README](../README.md)
