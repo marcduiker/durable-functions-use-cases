@@ -2,7 +2,13 @@
 
 ## Waiting for events
 
+```csharp
+```
+
 ## Raising events
+
+```csharp
+```
 
 ## Official Docs
 
