@@ -44,7 +44,7 @@ The serverless application you'll write, need to do the following things:
 Please familiarize yourself with some Durable Functions theory and code samples. These are the building blocks for the solution.
 
 - [Client, Orchestrator & Activity functions](durablefunctions.md)
-- [Suborchestrations](suborchestrations.md)
+- [Sub-orchestrations](suborchestrations.md)
 - [Events](events.md)
 - [Eternal orchestrations](eternalorchestrations.md)
 - [Stateful Entities](statefulentities.md)
