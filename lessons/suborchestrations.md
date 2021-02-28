@@ -10,15 +10,15 @@ public async Task Run(
     [OrchestrationTrigger] IDurableOrchestrationContext context,
     ILogger logger)
 {
-    var userId = context.GetInput<string>();
+    var playerId = context.GetInput<string>();
 
-    var userGameStats = await context.CallSubOrchestratorAsync<UserGameStats>(
-        nameof(CollectUserGameStatsOrchestrator),
-        userId);
+    var playerGameStats = await context.CallSubOrchestratorAsync<PlayerGameStats>(
+        nameof(CollectPlayerGameStatsOrchestrator),
+        playerId);
     
     await context.CallSubOrchestratorAsync(
-        nameof(UpdateUserGameStatsOrchestrator),
-        userGameStats);
+        nameof(UpdatePlayerGameStatsOrchestrator),
+        playerGameStats);
 }
     
 ```
