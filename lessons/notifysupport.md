@@ -43,7 +43,7 @@ The serverless application you'll write, need to do the following things:
 
 5. Once a support contact responds with a callback the notification process should stop and no other contacts should be notified.
 
-6. The callback response is received as a POST request where the body of the request contains only the phone number of the support contact:
+6. The callback response is received as a POST request using a fixed URL route (e.g. https://localhost:7071/api/CallbackHttpClient). The body of the request only contains the phone number of the support contact who was notified:
 
     ```json
     {
@@ -51,7 +51,7 @@ The serverless application you'll write, need to do the following things:
     }
     ```
 
-7. For times sake, the actual notification functionality (making phone calls or sending text messages (incl callbacks) can be faked for this lab. If you do have the time, you could try Twilio or Azure Communication Services.
+7. For times sake, the actual notification functionality, making phone calls or sending text messages (incl callbacks) can be faked for this lab. If you do have the time, you could try Twilio or Azure Communication Services.
 
 ## Build it!
 
