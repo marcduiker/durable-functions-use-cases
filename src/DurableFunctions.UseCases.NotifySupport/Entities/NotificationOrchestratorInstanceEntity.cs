@@ -16,7 +16,8 @@ namespace DurableFunctions.UseCases.NotifySupport
         public void Reset() => InstanceId = string.Empty;
 
         [FunctionName(nameof(NotificationOrchestratorInstanceEntity))]
-        public static Task Run([EntityTrigger] IDurableEntityContext ctx)
+        public static Task Run(
+            [EntityTrigger] IDurableEntityContext ctx)
             => ctx.DispatchAsync<NotificationOrchestratorInstanceEntity>();
     }
 }
