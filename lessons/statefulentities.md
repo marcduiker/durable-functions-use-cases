@@ -57,7 +57,7 @@ public static async Task<IActionResult> Run(
 In this example the `PlayerScoreEntity` state is updated by signalling (one way communication) the entity:
 
 ```csharp
-[FunctionName(nameof(SendNotificationOrchestrator))]
+[FunctionName(nameof(UpdatePlayerScoreOrchestrator))]
 public async Task Run(
     [OrchestrationTrigger] IDurableOrchestrationContext context,
     ILogger logger)
