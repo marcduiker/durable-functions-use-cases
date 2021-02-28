@@ -1,0 +1,46 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "5 - Eternal orchestrations",
+  "steps": [
+    {
+      "file": "lessons/eternalorchestrations.md",
+      "description": "Retrieve the list of items to clean up.",
+      "line": 14
+    },
+    {
+      "file": "lessons/eternalorchestrations.md",
+      "description": "Call the activity to perform the clean up. This returns an updated list of items to clean up.",
+      "line": 16
+    },
+    {
+      "file": "lessons/eternalorchestrations.md",
+      "description": "If there are still items left to clean up, a timer is created using the `CreateTime` method on the `IDurableOrchestrationContext` interface. Once the `nextCleanup` time has passed the orchestrator will continue the execution.",
+      "line": 23,
+      "selection": {
+        "start": {
+          "line": 12,
+          "character": 28
+        },
+        "end": {
+          "line": 12,
+          "character": 56
+        }
+      }
+    },
+    {
+      "file": "lessons/eternalorchestrations.md",
+      "description": "The `ContinueAsNew` method on the `IDurableOrchestrationContext` interface is used to restart the orchestrator. Here the updated list of items to cleanup are passed in. If the orchestrator does not expect any input, `null` should be passed in.",
+      "line": 25,
+      "selection": {
+        "start": {
+          "line": 12,
+          "character": 28
+        },
+        "end": {
+          "line": 12,
+          "character": 56
+        }
+      }
+    }
+  ]
+}
