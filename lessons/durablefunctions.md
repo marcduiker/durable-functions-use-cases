@@ -22,23 +22,23 @@ Durable Functions uses four types of functions:
 
 Orchestrator functions define the workflow as code. It contains the logic which steps (activities) are performed, and in which order.
 
-This is an example of an orchestrator where two functions are chained. The second activity function (`UpdateUserScoreActivity`) requires the output of the first activity function (`GetUserActivity`).
+This is an example of an orchestrator where two functions are chained. The second activity function (`UpdatePlayerScoreActivity`) requires the output of the first activity function (`GetPlayerActivity`).
 
 ```csharp
-[FunctionName(nameof(UpdateUserScoreOrchestrator))]
+[FunctionName(nameof(UpdatePlayerScoreOrchestrator))]
 public async Task Run(
     [OrchestrationTrigger] IDurableOrchestrationContext context,
     ILogger logger)
 {
-    var userId = context.GetInput<string>();
+    var playerId = context.GetInput<string>();
 
-    var user = await context.CallActivityAsync<User>(
-        nameof(GetUserActivity),
-        userId);
+    var player = await context.CallActivityAsync<Player>(
+        nameof(GetPlayerActivity),
+        playerId);
     
     await context.CallActivityAsync(
-        nameof(UpdateUserScoreActivity),
-        user);
+        nameof(UpdatePlayerScoreActivity),
+        player);
 }
 ```
 
@@ -51,14 +51,14 @@ Activity functions are the units of work which the workflow orchestrates. These 
 The Durable Function framework guarantees that activity functions are executed at least once as part of an orchestrator.
 
 ```csharp
-[FunctionName(nameof(GetUserActivity))]
-public async Task<User> Run(
-    [ActivityTrigger] string userId,
+[FunctionName(nameof(GetPlayerActivity))]
+public async Task<Player> Run(
+    [ActivityTrigger] string playerId,
     ILogger logger)
 {
     // Call external API or database.
-    // var user = await gameUserService.GetUserAsync(userId);
-    // return user;
+    // var player = await gamePlayerService.GetPlayerAsync(playerId);
+    // return player;
 }
 ```
 
@@ -67,7 +67,7 @@ public async Task<User> Run(
 A client function is responsible for creating a new instance of a workflow, also known as an orchestrator instance. It can perform other operations on an orchestrator instance as well, such as: querying the orchestrator state, and terminating the instance.
 
 ```csharp
-[FunctionName(nameof(UpdateUserScoreClient))]
+[FunctionName(nameof(UpdatePlayerScoreClient))]
 public static async Task<HttpResponseMessage> Run(
 [HttpTrigger(
     AuthorizationLevel.Function,
@@ -76,11 +76,11 @@ public static async Task<HttpResponseMessage> Run(
 [DurableClient] IDurableClient client,
 ILogger logger)
 {
-    var userId = await message.Content.ReadAsAsync<string>();
+    var playerId = await message.Content.ReadAsAsync<string>();
 
     string instanceId = await client.StartNewAsync(
-        nameof(UpdateUserScoreOrchestrator),
-        userId);
+        nameof(UpdatePlayerScoreOrchestrator),
+        playerId);
 
     return client.CreateCheckStatusResponse(message, instanceId);
 }
