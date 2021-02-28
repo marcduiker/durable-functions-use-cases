@@ -53,7 +53,7 @@ Please familiarize yourself with some Durable Functions theory and code samples.
 
 Now it's time to build your solution.
 
-If you need some tips, check [this page](tips.md).
+If you need some tips, check [this page](notifysupport-tips.md).
 
 ---
 [🔼 Main README](../README.md)
