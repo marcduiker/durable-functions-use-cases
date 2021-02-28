@@ -2,10 +2,10 @@
 
 In this repo I'll collect some real-life challenges which you can solve using Azure Functions & Durable Functions.
 
-Check the [prerequisites](/lessons/prerequisites.md) before you start.
+## 1. [Notify Support](/lessons/notifysupport.md)
 
-## 1. Notify Support
+Write a Function App that responds to a HTTP POST to notify members of the support team so they can investigate the issue.
 
-Write a Function App that responds to a HTTP POST to notify team members who are part of a support schedule.
+![Notify Support Flow diagram](/diagrams/notifysupport.png)
 
-[Hands-on lesson](/lessons/notifysupport.md)
+Go to the [hands-on lab](/lessons/notifysupport.md).
