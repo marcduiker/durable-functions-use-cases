@@ -1,6 +1,6 @@
 {
   "$schema": "https://aka.ms/codetour-schema",
-  "title": "5 - Eternal orchestrations",
+  "title": "05 - Eternal orchestrations",
   "steps": [
     {
       "file": "lessons/eternalorchestrations.md",

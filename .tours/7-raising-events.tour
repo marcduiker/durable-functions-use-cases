@@ -1,6 +1,6 @@
 {
   "$schema": "https://aka.ms/codetour-schema",
-  "title": "7 - Raising Events",
+  "title": "07 - Raising Events",
   "steps": [
     {
       "file": "lessons/events.md",

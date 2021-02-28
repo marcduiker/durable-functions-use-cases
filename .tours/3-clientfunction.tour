@@ -1,6 +1,6 @@
 {
   "$schema": "https://aka.ms/codetour-schema",
-  "title": "3 - Client Function",
+  "title": "03 - Client Function",
   "steps": [
     {
       "file": "lessons/durablefunctions.md",

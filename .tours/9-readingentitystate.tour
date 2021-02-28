@@ -1,0 +1,36 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "09 - Reading Entity State",
+  "steps": [
+    {
+      "file": "lessons/statefulentities.md",
+      "description": "A new `EntityId` is created based on the name of the entity class and the entity key. In this case, the key is the player name.",
+      "line": 44
+    },
+    {
+      "file": "lessons/statefulentities.md",
+      "description": "Using the `ReadEntityStateAsync<TEntity>` method on the `IDurableClient` interface the entity state is read for the provided `entityId`. The return value is of type `EntityStateResponse<TEntity>`.",
+      "line": 45,
+      "selection": {
+        "start": {
+          "line": 40,
+          "character": 21
+        },
+        "end": {
+          "line": 40,
+          "character": 35
+        }
+      }
+    },
+    {
+      "file": "lessons/statefulentities.md",
+      "description": "It could be that no entity exists for the given combination of entity class name and player name. So it's a good practice to use the `EntityExists` method on the `EntityStateResponse<TEntity>` before accessing the entity properties.",
+      "line": 46
+    },
+    {
+      "file": "lessons/statefulentities.md",
+      "description": "Here the `Score` property is accessed on the `EntityStateResponse<PlayerScoreEntity>` type.",
+      "line": 48
+    }
+  ]
+}

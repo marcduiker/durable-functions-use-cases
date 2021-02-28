@@ -1,6 +1,6 @@
 {
   "$schema": "https://aka.ms/codetour-schema",
-  "title": "2 - Activity Function",
+  "title": "02 - Activity Function",
   "steps": [
     {
       "file": "lessons/durablefunctions.md",

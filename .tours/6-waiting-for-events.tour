@@ -1,6 +1,6 @@
 {
   "$schema": "https://aka.ms/codetour-schema",
-  "title": "6 - Waiting for Events",
+  "title": "06 - Waiting for Events",
   "steps": [
     {
       "file": "lessons/events.md",

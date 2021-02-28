@@ -1,6 +1,6 @@
 {
   "$schema": "https://aka.ms/codetour-schema",
-  "title": "1 - Orchestrator Function",
+  "title": "01 - Orchestrator Function",
   "steps": [
     {
       "file": "lessons/durablefunctions.md",

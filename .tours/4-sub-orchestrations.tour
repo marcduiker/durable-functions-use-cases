@@ -1,6 +1,6 @@
 {
   "$schema": "https://aka.ms/codetour-schema",
-  "title": "4 - Sub-orchestrations",
+  "title": "04 - Sub-orchestrations",
   "steps": [
     {
       "file": "lessons/suborchestrations.md",
