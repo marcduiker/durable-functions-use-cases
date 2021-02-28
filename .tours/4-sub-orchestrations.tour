@@ -1,0 +1,36 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "4 - Sub-orchestrations",
+  "steps": [
+    {
+      "file": "lessons/suborchestrations.md",
+      "description": "Use the `CallSubOrchestratorAsync<T>` method on the `IDurableOrchestrationContext` interface to call a sub-orchestrator. If the orchestrator returns a result, the output type needs to be specified as the generic parameter. Here an output of type `UserGameStats` is expected.",
+      "line": 15,
+      "selection": {
+        "start": {
+          "line": 10,
+          "character": 28
+        },
+        "end": {
+          "line": 10,
+          "character": 56
+        }
+      }
+    },
+    {
+      "file": "lessons/suborchestrations.md",
+      "description": "The first parameter is the name of the orchestrator to start.",
+      "line": 16
+    },
+    {
+      "file": "lessons/suborchestrations.md",
+      "description": "The second parameter is the input for the orchestrator. If no input is required a value of `null` can be used.",
+      "line": 17
+    },
+    {
+      "file": "lessons/suborchestrations.md",
+      "description": "Here a sub-orchestrator is called that has no return value.",
+      "line": 19
+    }
+  ]
+}
