@@ -1,0 +1,41 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "10 - Updating Entity State",
+  "steps": [
+    {
+      "file": "lessons/statefulentities.md",
+      "description": "First a new `EntityId` is created based on the `PlayerScoreEntity` class name and the player name.",
+      "line": 66
+    },
+    {
+      "file": "lessons/statefulentities.md",
+      "description": "The `SignalEntity` method on the `IDurableOrchestrationContext` interface is used to signal (one way communication) to the `PlayerScoreEntity` instance.",
+      "line": 67,
+      "selection": {
+        "start": {
+          "line": 66,
+          "character": 40
+        },
+        "end": {
+          "line": 66,
+          "character": 57
+        }
+      }
+    },
+    {
+      "file": "lessons/statefulentities.md",
+      "description": "The first parameter is the entity ID.",
+      "line": 68
+    },
+    {
+      "file": "lessons/statefulentities.md",
+      "description": "The second parameter is the name of the operation that will be signalled. Here the `Set` method will be signalled.",
+      "line": 69
+    },
+    {
+      "file": "lessons/statefulentities.md",
+      "description": "The third parameter is the value that is passed to the signalled method. In this case the player score is sent to the entity.",
+      "line": 70
+    }
+  ]
+}

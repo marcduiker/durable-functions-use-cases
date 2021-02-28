@@ -18,8 +18,9 @@ public class PlayerScoreEntity
     public void Reset() => Score = 0;
     
     [FunctionName(nameof(PlayerScoreEntity))]
-    public static Task Run([EntityTrigger] IDurableEntityContext ctx)
-        => ctx.DispatchAsync<PlayerScoreEntity>();
+    public static Task Run(
+        [EntityTrigger] IDurableEntityContext context)
+        => context.DispatchAsync<PlayerScoreEntity>();
 }
 ```
 
