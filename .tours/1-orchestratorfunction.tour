@@ -68,5 +68,6 @@
       "line": 42
     }
   ],
-  "ref": "main"
+  "ref": "main",
+  "isPrimary": true
 }
