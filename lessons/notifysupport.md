@@ -4,9 +4,23 @@
 
 The goal of this lab is to write a Function App which responds to incidents (posted as HTTP request) and notifies members of the support team so they can investigate the issue.
 
+## Flow Diagram
+
+![Notify Support Flow diagram](../diagrams/notifysupport.png)
+
 ## Prerequisites
 
 Read the [prerequisites](prerequisites.md) to ensure you have all the right tools installed.
+
+## Durable Functions Theory
+
+Please familiarize yourself with some Durable Functions theory and code samples. These are the building blocks for the solution.
+
+- [Client, Orchestrator & Activity functions](durablefunctions.md)
+- [Sub-orchestrations](suborchestrations.md)
+- [Events](events.md)
+- [Eternal orchestrations](eternalorchestrations.md)
+- [Stateful Entities](statefulentities.md)
 
 ## Requirements
 
@@ -38,16 +52,6 @@ The serverless application you'll write, need to do the following things:
     ```
 
 7. For times sake, the actual notification functionality (making phone calls or sending text messages (incl callbacks) can be faked for this lab. If you do have the time, you could try Twilio or Azure Communication Services.
-
-## Durable Functions Theory
-
-Please familiarize yourself with some Durable Functions theory and code samples. These are the building blocks for the solution.
-
-- [Client, Orchestrator & Activity functions](durablefunctions.md)
-- [Sub-orchestrations](suborchestrations.md)
-- [Events](events.md)
-- [Eternal orchestrations](eternalorchestrations.md)
-- [Stateful Entities](statefulentities.md)
 
 ## Build it!
 
