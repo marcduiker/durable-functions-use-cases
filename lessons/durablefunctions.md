@@ -7,6 +7,8 @@ Durable Functions allows you to write workflows (orchestrations) in code. The st
 - Waiting for external events.
 - Executing long running, and even eternal workflows.
 
+You can use Durable Functions in C# by referencing the [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) NuGet package.
+
 ## Function types
 
 Durable Functions uses four types of functions:

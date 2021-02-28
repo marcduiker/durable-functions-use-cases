@@ -14,7 +14,8 @@
           "line": 28,
           "character": 27
         }
-      }
+      },
+      "line": 30
     },
     {
       "file": "lessons/durablefunctions.md",
@@ -28,12 +29,13 @@
           "line": 31,
           "character": 34
         }
-      }
+      },
+      "line": 33
     },
     {
       "file": "lessons/durablefunctions.md",
       "description": "Use `CallActivityAsync<T>` to schedule a call to an activity function. Here the output is expected to be of type `User`.",
-      "line": 33,
+      "line": 35,
       "selection": {
         "start": {
           "line": 33,
@@ -48,22 +50,22 @@
     {
       "file": "lessons/durablefunctions.md",
       "description": "The first argument is the name of the actvity function that is called.",
-      "line": 34
+      "line": 36
     },
     {
       "file": "lessons/durablefunctions.md",
       "description": "The second argument is the input for the activity function. Activity functions only support one input parameter. ",
-      "line": 35
-    },
-    {
-      "file": "lessons/durablefunctions.md",
-      "description": "Activity functions do not require an output parameter. When the activity output is `void` (or `Task` for async activities) no output type is required for the `CallActivityAsync` method.",
       "line": 37
     },
     {
       "file": "lessons/durablefunctions.md",
+      "description": "Activity functions do not require an output parameter. When the activity output is `void` (or `Task` for async activities) no output type is required for the `CallActivityAsync` method.",
+      "line": 39
+    },
+    {
+      "file": "lessons/durablefunctions.md",
       "description": "Due to the replay functionality of the orchestrator function there are limits of what code is allowed inside an orchestrator. See [orchestrator code constraints](https://docs.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-code-constraints) for additional info.",
-      "line": 40
+      "line": 42
     }
   ],
   "ref": "main"
