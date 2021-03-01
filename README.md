@@ -12,4 +12,4 @@ Write a Function App that responds to alerts and notifies members of a support t
 
 This challenge combines sub-orchestrations, eternal orchestrations, waiting for external events, and using stateful entities.
 
-Go to the [Notify Support Challange](/lessons/notifysupport.md).
+Go to the [Notify Support Challenge](/lessons/notifysupport.md).
