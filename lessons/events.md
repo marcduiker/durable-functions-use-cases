@@ -4,6 +4,8 @@ Orchestrator functions have the ability to wait and listen for external events. 
 
 ## Waiting for events
 
+![Waiting for Events](../diagrams/waitforexternalevent.png)
+
 This code sample shows how an orchestrator waits for events.
 
 ```csharp
@@ -25,6 +27,8 @@ public static async Task Run(
 ```
 
 ## Raising events
+
+![Raise an Event](../diagrams/raiseevents.png)
 
 This example shows how to raise an event from a Durable Functions client function.
 

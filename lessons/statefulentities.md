@@ -2,6 +2,8 @@
 
 Entity functions allow you to read and write small pieces of state, known as stateful entities. Entities can be accessed from client functions and orchestrator functions.
 
+![Stateful Entities](../diagrams/stateful_entities.png)
+
 ## Entity Definition
 
 This is an example of a class-based entity function. It stores the game score for a player, and it allows setting & resetting of the score.
