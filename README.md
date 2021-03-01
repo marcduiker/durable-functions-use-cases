@@ -10,6 +10,6 @@ Write a Function App that responds to alerts and notifies members of a support t
 
 ![Notify Support Flow diagram](/diagrams/notifysupport.png)
 
-This challenge combines, sub-orchestrations, eternal orchestations, waiting for external events and using stateful entities.
+This challenge combines sub-orchestrations, eternal orchestrations, waiting for external events, and using stateful entities.
 
 Go to the [Notify Support Challange](/lessons/notifysupport.md).
