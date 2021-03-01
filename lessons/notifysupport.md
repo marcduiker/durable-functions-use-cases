@@ -1,8 +1,8 @@
-# Hands-on Lab: Notify Support
+# Notify Support Challenge
 
 ## Goal
 
-The goal of this lab is to write a Function App which responds to incidents (posted as HTTP request) and notifies members of the support team so they can investigate the issue.
+The goal of this challenge is to write a Function App which responds to alerts (posted as HTTP request) and notifies members of the support team so they can investigate the issue.
 
 ## Flow Diagram
 
@@ -51,7 +51,7 @@ The serverless application you'll write, need to do the following things:
     }
     ```
 
-7. For times sake, the actual notification functionality, making phone calls or sending text messages (incl callbacks) can be faked for this lab. If you do have the time, you could try Twilio or Azure Communication Services.
+7. For times sake, the actual notification functionality, making phone calls or sending text messages (incl callbacks) can be faked for this challenge. If you do have the time, you could try Twilio or Azure Communication Services.
 
 ## Build it!
 

@@ -101,4 +101,4 @@ Entity functions are described in [this section](statefulentities.md).
 [Durable Functions Overview](https://docs.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview?tabs=csharp)
 
 ---
-[🔼 Hands-on Lab](notifysupport.md) | [Sub-orchestrations ▶](suborchestrations.md)
+[🔼 Challenge](notifysupport.md) | [Sub-orchestrations ▶](suborchestrations.md)

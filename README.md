@@ -1,11 +1,15 @@
 # Durable Functions Use Cases
 
-In this repo I'll collect some real-life challenges which you can solve using Azure Functions & Durable Functions.
+In this repository, I'll collect some real-life challenges you can solve using Azure Functions & Durable Functions.
+
+These challenges do assume some experience with Azure Functions and a basic understanding of Durable Functions. If you want to learn more about those first, then please visit [Azure Functions University](https://github.com/marcduiker/azure-functions-university).
 
 ## 1. [Notify Support](/lessons/notifysupport.md)
 
-Write a Function App that responds to a HTTP POST to notify members of the support team so they can investigate the issue.
+Write a Function App that responds to alerts and notifies members of a support team to investigate the issue.
 
 ![Notify Support Flow diagram](/diagrams/notifysupport.png)
 
-Go to the [hands-on lab](/lessons/notifysupport.md).
+This challenge combines, sub-orchestrations, eternal orchestations, waiting for external events and using stateful entities.
+
+Go to the [Notify Support Challange](/lessons/notifysupport.md).

@@ -81,4 +81,4 @@ public async Task Run(
 - [Developer's guide to durable entities in .NET](https://docs.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-dotnet-entities)
 
 ---
-[◀ Events](events.md) | [🔼 Hands-on Lab](notifysupport.md)
+[◀ Events](events.md) | [🔼 Challenge](notifysupport.md)

@@ -42,4 +42,4 @@ Create a new folder (local git repository) and use the repository you're current
 You should be good to go now!
 
 ---
-[🔼 Main README](../README.md) | [Hands-on Lab ▶](notifysupport.md)
+[🔼 Main README](../README.md) | [Challenge ▶](notifysupport.md)
