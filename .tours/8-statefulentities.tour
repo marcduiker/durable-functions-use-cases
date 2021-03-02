@@ -5,14 +5,14 @@
     {
       "file": "lessons/statefulentities.md",
       "description": "This entity is created as a class based definition. It it recommended to use the `[JsonObject(MemberSerialization.OptIn)]` attribute and explicitly specify the members of this class that require to be serialized and stored.",
-      "line": 11,
+      "line": 13,
       "selection": {
         "start": {
-          "line": 10,
+          "line": 13,
           "character": 1
         },
         "end": {
-          "line": 10,
+          "line": 13,
           "character": 40
         }
       }
@@ -20,14 +20,14 @@
     {
       "file": "lessons/statefulentities.md",
       "description": "The `PlayerScoreEntity` has a Score property which is the only member that is serialized/stored. Updating this property is done via methods on the entity.",
-      "line": 14,
+      "line": 16,
       "selection": {
         "start": {
-          "line": 11,
+          "line": 16,
           "character": 14
         },
         "end": {
-          "line": 11,
+          "line": 16,
           "character": 31
         }
       }
@@ -35,24 +35,24 @@
     {
       "file": "lessons/statefulentities.md",
       "description": "The `Set` method updates the `Score` property with the supplied value.",
-      "line": 16
-    },
-    {
-      "file": "lessons/statefulentities.md",
-      "description": "The `Reset` method sets the `Score` to 0.",
       "line": 18
     },
     {
       "file": "lessons/statefulentities.md",
+      "description": "The `Reset` method sets the `Score` to 0.",
+      "line": 20
+    },
+    {
+      "file": "lessons/statefulentities.md",
       "description": "The `[EntityTrigger]` binding defines this function is an entity function.",
-      "line": 22,
+      "line": 24,
       "selection": {
         "start": {
-          "line": 22,
+          "line": 24,
           "character": 25
         },
         "end": {
-          "line": 22,
+          "line": 24,
           "character": 46
         }
       }
@@ -60,7 +60,7 @@
     {
       "file": "lessons/statefulentities.md",
       "description": "The `DispatchAsync<T>` method in the `IDurableEntityContext` interface dispatches the incoming entity operation using reflection.",
-      "line": 23
+      "line": 25
     }
   ]
 }
