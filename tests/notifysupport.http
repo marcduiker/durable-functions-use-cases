@@ -7,9 +7,18 @@ Content-Type: application/json
     "severity" : 1
 }
 
+### Get status of orchestration
+@orchestratorId = {{notifyRequest.response.body.$.id}}
+GET http://localhost:7071/runtime/webhooks/durabletask/instances/{{orchestratorId}}
+    ?taskHub=NotifySupportV1
+    &connection=Storage
+    &code=iKw1SaXtu0acB5oGzYLvmiqpjGBE5HNzaAVJrZbEr1ZqWU4jVKCzBg==
+
 ### Send Callback event
+
+# @name callbackRequest
 POST http://localhost:7071/api/CallbackHttpClient
 Content-Type: application/json
 
-"+31622222222"
+"+31611111111"
 
