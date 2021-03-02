@@ -32,4 +32,4 @@ public async Task Run(
 [Sub-orchestrations in Durable Functions](https://docs.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-sub-orchestrations?tabs=csharp)
 
 ---
-[◀ Durable Functions](durablefunctions.md) | [🔼 Challenge](notifysupport.md) | [Eternal Orchestrations ▶](eternalorchestrations.md)
+[◀ Durable Functions](durablefunctions.md) | [🔼 Notify Support Challenge](notifysupport.md) | [Eternal Orchestrations ▶](eternalorchestrations.md)

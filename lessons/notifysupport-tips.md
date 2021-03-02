@@ -22,3 +22,6 @@ For more info read:
 ## Handling the callback
 
 When the callback is received, the only information we have is a phone number. If an orchestrator is waiting for the callback event before it is successfully completed, that event should be raised. But we don't receive the instance ID of the orchestrator in order to raise the event. A solution for this is to use Stateful Entities to store the instance ID when the notification is sent, and to read the instance ID when we receive the callback.
+
+---
+[🔼 Notify Support Challenge](notifysupport.md)
