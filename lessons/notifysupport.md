@@ -26,16 +26,20 @@ Please familiarize yourself with some Durable Functions theory and code samples.
 
 The serverless application you'll write, need to do the following things:
 
-1. Respond to an incoming HTTP POST request. The json body is as follows:
+1. Respond to an incoming HTTP POST request on a static URL (e.g. https://localhost:7071/api/NotifySupportHttpClient). The json body is as follows:
 
     ```json
     {
-        "message" : "HALP!",
+        "message" : "The server is on fire!",
         "severity" : 1
     }
     ```
 
-2. Support contact information must be read from Table Storage. A [data export](../data/SupportContacts.csv) has been made available which can be imported in a `SupportContacts` table. Only the people in **Team A** are part of the support schedule. For more info about *Table Storage bindings* see [this Azure Functions University lesson](https://github.com/marcduiker/azure-functions-university/blob/main/lessons/table-dotnet.md).
+    > For more info about *Azure Functions HttpTriggers* see this [Azure Functions University lesson](https://github.com/marcduiker/azure-functions-university/blob/main/lessons/http-dotnet.md).
+
+2. Support contact information must be read from Table Storage. A [data export](../data/SupportContacts.csv) has been made available which can be imported in a `SupportContacts` table. Only the people in **Team A** are part of the support schedule.
+
+    > For more info about *Table Storage bindings* see [this Azure Functions University lesson](https://github.com/marcduiker/azure-functions-university/blob/main/lessons/table-dotnet.md).
 
 3. The notification process must start with the first support contact in the list (ordered ascending by the `Order` field), if the contact do not respond within 5 minutes the next contact should be notified. This continues until there's no-one available in the support contact list. The time should be a configurable value.
 
@@ -43,7 +47,7 @@ The serverless application you'll write, need to do the following things:
 
 5. Once a support contact responds with a callback the notification process should stop and no other contacts should be notified.
 
-6. The callback response is received as a POST request using a fixed URL route (e.g. https://localhost:7071/api/CallbackHttpClient). The body of the request only contains the phone number of the support contact who was notified:
+6. The callback response is received as a POST request on a static URL (e.g. https://localhost:7071/api/CallbackHttpClient). The body of the request only contains the phone number of the support contact who was notified:
 
     ```json
     {
@@ -51,7 +55,7 @@ The serverless application you'll write, need to do the following things:
     }
     ```
 
-7. For times sake, the actual notification functionality, making phone calls or sending text messages (incl callbacks) can be faked for this challenge. If you do have the time, you could try Twilio or Azure Communication Services.
+7. For times sake, the actual notification functionality, making phone calls or sending text messages (incl callbacks) can be faked for this challenge. The callback, described in the previous requirement, can be triggered manually via a REST client. If you do have the time, you could try Twilio or Azure Communication Services.
 
 ## Build it!
 
