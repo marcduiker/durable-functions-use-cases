@@ -2,15 +2,13 @@
 
 ![](../diagrams/notifysupport_functions.png)
 
-## Sub-orchestrations
+## Main orchestrator
 
-Use the main orchestrator to iterate over the support contacts. This orchestrator calls a sub-orchestrator that takes care of sending the notifications and waiting for the callback event.
+Use the main orchestrator with an activity function to get the list of Support Contacts. This orchestrator needs to iterate over the contacts. Do not use a for/each loop, use the `ContinueAsNew` functionality to restart the orchestrator with the next Support Contact. The main orchestrator also calls a sub-orchestrator that takes care of sending the notifications and waiting for the callback event.
 
-## Eternal orchestrations
+## Sub-orchestrator
 
-Use the `ContinueAsNew` functionality to (re)start the orchestrator which sends notifications to a support contact and waits for the callback event. Make sure to only restart the orchestration for the max number of retries per support contact.
-
-The `ContinueAsNew` functionality can also be used in the main orchestrator when the next support contact needs to be notified.
+Use a sub-orchestrator with an activity function to send the notification to a Support Contact. This sub-orchestrator also waits for the callback event. Use a time-out and a default value when waiting for the event. The `ContinueAsNew` functionality can be used to restart the sub-orchestrator in order to do a notification retry for the same Support Contact. Make sure to only restart the orchestration for the max number of retries per Support Contact.
 
 ## Timings when waiting for events
 
@@ -23,7 +21,7 @@ For more info read:
 
 ## Handling the callback
 
-When the callback is received, the only information we have is a phone number. If an orchestrator is waiting for the callback event before it is successfully completed, that event should be raised. But we don't receive the instance ID of the orchestrator in order to raise the event. A solution for this is to use Stateful Entities to store the instance ID when the notification is sent, and to read the instance ID when we receive the callback.
+Create an HttpTrigger client function to handle the callback and raise the event. When the callback is received, the only information we have is a phone number. The sub-orchestrator is waiting for the callback event, and that event should be raised to that specific sub-orchestrator instance. But we don't have the instance ID of the orchestrator in the callback request. A solution for this is to use Stateful Entities to store the instance ID when the notification is sent, and to read the instance ID when we receive the callback. Use the phone number as entity key.
 
 ---
 [🔼 Notify Support Challenge](notifysupport.md)
