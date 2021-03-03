@@ -1,8 +1,10 @@
 # Tips for building the Notify Support solution
 
+![](../diagrams/notifysupport_functions.png)
+
 ## Sub-orchestrations
 
-Use an orchestrator to iterate over the support contacts. This calls a sub-orchestrator that takes care of sending the notifications and waiting for the callback event.
+Use the main orchestrator to iterate over the support contacts. This orchestrator calls a sub-orchestrator that takes care of sending the notifications and waiting for the callback event.
 
 ## Eternal orchestrations
 
