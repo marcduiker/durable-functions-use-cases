@@ -1,0 +1,402 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "99-Solution",
+  "steps": [
+    {
+      "file": "src/DurableFunctions.UseCases.NotifySupport/Models/NotifySupportClientInput.cs",
+      "description": "The `NotifySupportClientInput` class is used as the payload when triggering the `NotifySupportHttpClient` function. It only contains a message (string) and a severity (int) related to the alert.",
+      "line": 3,
+      "selection": {
+        "start": {
+          "line": 3,
+          "character": 18
+        },
+        "end": {
+          "line": 3,
+          "character": 37
+        }
+      },
+      "title": "NotifySupportClientInput"
+    },
+    {
+      "file": "src/DurableFunctions.UseCases.NotifySupport/Clients/NotifySupportHttpClient.cs",
+      "description": "An `HttpTrigger` function is used to act as the client function. This function will start a new instance of the `NotifySupportOrchestrator` function.\r\n\r\nThe `[DurableClient]` binding indicates this is a Durable Client function.",
+      "line": 19,
+      "selection": {
+        "start": {
+          "line": 32,
+          "character": 23
+        },
+        "end": {
+          "line": 32,
+          "character": 48
+        }
+      },
+      "title": "NotifySupportHttpClient bindings"
+    },
+    {
+      "file": "src/DurableFunctions.UseCases.NotifySupport/Clients/NotifySupportHttpClient.cs",
+      "description": "The `NotifySupportClientInput` object is read from the request body.",
+      "line": 22,
+      "selection": {
+        "start": {
+          "line": 22,
+          "character": 65
+        },
+        "end": {
+          "line": 22,
+          "character": 89
+        }
+      },
+      "title": "NotifySupportHttpClient read input"
+    },
+    {
+      "file": "src/DurableFunctions.UseCases.NotifySupport/Clients/NotifySupportHttpClient.cs",
+      "description": "Two values are read from environment variables. These are stored in the `local.settings.json` file when developing locally. Once the function app is published they're read from the App Settings.\r\n\r\n- `WaitTimeForEscalationInSeconds`, is the wait time before escalating to another member of the support team.\r\n- `MaxNotificationAttempts`, is the number of attempts that is made to notify one support contact.",
+      "line": 24,
+      "selection": {
+        "start": {
+          "line": 24,
+          "character": 92
+        },
+        "end": {
+          "line": 24,
+          "character": 115
+        }
+      },
+      "title": "NotifySupportHttpClient read env vars"
+    },
+    {
+      "file": "src/DurableFunctions.UseCases.NotifySupport/Clients/NotifySupportHttpClient.cs",
+      "description": "I regularly use Builders to create new object instances. Here the `NotifySupportOrchestratorInputBuilder` is called to create the input for the `NotifySupportOrchestrator`.",
+      "line": 29,
+      "selection": {
+        "start": {
+          "line": 26,
+          "character": 37
+        },
+        "end": {
+          "line": 26,
+          "character": 74
+        }
+      },
+      "title": "NotifySupportHttpClient build input"
+    },
+    {
+      "file": "src/DurableFunctions.UseCases.NotifySupport/Clients/NotifySupportHttpClient.cs",
+      "description": "A new `NotifySupportOrchestrator` instance is created & started. This is the main orchestrator.",
+      "line": 33,
+      "selection": {
+        "start": {
+          "line": 32,
+          "character": 23
+        },
+        "end": {
+          "line": 32,
+          "character": 48
+        }
+      },
+      "title": "NotifySupportHttpClient start main orchestrator"
+    },
+    {
+      "file": "src/DurableFunctions.UseCases.NotifySupport/Clients/NotifySupportHttpClient.cs",
+      "description": "A response is sent back to the client to indicate the `NotifySupportOrchestrator` has been started.",
+      "line": 35,
+      "title": "NotifySupportHttpClient response"
+    },
+    {
+      "file": "src/DurableFunctions.UseCases.NotifySupport/Orchestrators/NotifySupportOrchestrator.cs",
+      "description": "This is the main orchestrator, `NotifySupportOrchestrator`. This orchestrator will call an activity to read the support contacts from Table Storage, iterate over the contacts and start a sub-orchestration to notify the contact.\r\n\r\nThe `[OrchestrationTrigger]` binding is used to indicate this is an orchestrator function.",
+      "line": 15,
+      "selection": {
+        "start": {
+          "line": 14,
+          "character": 14
+        },
+        "end": {
+          "line": 14,
+          "character": 34
+        }
+      },
+      "title": "NotifySupportOrchestrator purpose and bindings"
+    },
+    {
+      "file": "src/DurableFunctions.UseCases.NotifySupport/Orchestrators/NotifySupportOrchestrator.cs",
+      "description": "The `NotifySupportOrchestratorInput` is read from the orchestration context.",
+      "line": 17,
+      "selection": {
+        "start": {
+          "line": 17,
+          "character": 42
+        },
+        "end": {
+          "line": 17,
+          "character": 72
+        }
+      },
+      "title": "NotifySupportOrchestrator read input"
+    },
+    {
+      "file": "src/DurableFunctions.UseCases.NotifySupport/Orchestrators/NotifySupportOrchestrator.cs",
+      "description": "The `SupportContacts` property is initially null. It will be populated with support contacts once the `GetSupportContactActivity` is called. \r\nBecause the `ContinueAsNew` functionalityy is used later in this orchestrator this `if` statement was added so it will only run for the first full execution (not taking into account the regular replay behaviour of the orchestrator).\r\n\r\n",
+      "line": 19,
+      "selection": {
+        "start": {
+          "line": 42,
+          "character": 25
+        },
+        "end": {
+          "line": 42,
+          "character": 38
+        }
+      },
+      "title": "NotifySupportOrchestrator SupportContacts check"
+    },
+    {
+      "file": "src/DurableFunctions.UseCases.NotifySupport/Orchestrators/NotifySupportOrchestrator.cs",
+      "description": "The `GetSupportContactActivity` function is scheduled which returns a list of `SupportContactEntity`. The input for the activity function is hardcoded, `\"A\"`, since we're only interested in support contacts that belong to team A.",
+      "line": 24,
+      "selection": {
+        "start": {
+          "line": 22,
+          "character": 83
+        },
+        "end": {
+          "line": 22,
+          "character": 103
+        }
+      },
+      "title": "NotifySupportOrchestrator get support contacts"
+    },
+    {
+      "file": "src/DurableFunctions.UseCases.NotifySupport/Orchestrators/NotifySupportOrchestrator.cs",
+      "description": "Once we have the support contacts we add them to the `NotifySupportOrchestratorInput` object so we're reusing it when `ContinueAsNew` is used on the orchestrator.",
+      "line": 26,
+      "selection": {
+        "start": {
+          "line": 17,
+          "character": 42
+        },
+        "end": {
+          "line": 17,
+          "character": 72
+        }
+      },
+      "title": "NotifySupportOrchestrator update SupportContacts"
+    },
+    {
+      "file": "src/DurableFunctions.UseCases.NotifySupport/Orchestrators/NotifySupportOrchestrator.cs",
+      "description": "A builder is used to create the input object for the sub-orchestratot (`SendNotificationOrchestrator`).",
+      "line": 31,
+      "selection": {
+        "start": {
+          "line": 34,
+          "character": 28
+        },
+        "end": {
+          "line": 34,
+          "character": 56
+        }
+      },
+      "title": "NotifySupportOrchestrator build input"
+    },
+    {
+      "file": "src/DurableFunctions.UseCases.NotifySupport/Orchestrators/NotifySupportOrchestrator.cs",
+      "description": "The sub-orchestrator, `SendNotificationOrchestrator`, is scheduled and awaited. The response is a `SendNotificationOrchestratorResult` object.",
+      "line": 35,
+      "title": "NotifySupportOrchestrator call sub-orchestrator"
+    },
+    {
+      "file": "src/DurableFunctions.UseCases.NotifySupport/Models/SendNotificationOrchestratorResult.cs",
+      "description": "The `SendNotificationOrchestratorResult` contains:\r\n\r\n- The number of attempts that has been made to notify a support contact. \r\n- An indicator if a callback event has been received in the sub-orchestrator.\r\n- The phone number of the support contact.",
+      "line": 8,
+      "selection": {
+        "start": {
+          "line": 9,
+          "character": 1
+        },
+        "end": {
+          "line": 9,
+          "character": 2
+        }
+      },
+      "title": "SendNotificationOrchestratorResult"
+    },
+    {
+      "file": "src/DurableFunctions.UseCases.NotifySupport/Orchestrators/NotifySupportOrchestrator.cs",
+      "description": "When no callback event has been received and the current support contact is not equal to the last contact in the support contact array, the `SupportContactIndex` is incremented by one and the (main) orchestrator is continued as new instance. This means the orchestrator will now use the next support contact in the list to try and notify.",
+      "line": 43,
+      "title": "NotifySupportOrchestrator  ContinueAsNew"
+    },
+    {
+      "file": "src/DurableFunctions.UseCases.NotifySupport/Orchestrators/NotifySupportOrchestrator.cs",
+      "description": "When the callback has been received or if the current contact is equal to the last support contact in the array the main orchestrator is complete.",
+      "line": 46,
+      "title": "NotifySupportOrchestrator complete"
+    },
+    {
+      "file": "src/DurableFunctions.UseCases.NotifySupport/Orchestrators/SendNotificationOrchestrator.cs",
+      "description": "The `SendNotificationOrchestrator` function is the sub-orchestrator. It handles scheduling of the notification using the `SendNotificationActivity` activity, and it waits for the corresponding callback event. \r\n\r\nThe `ContinueAsNew` functionality is used in this sub-orchestration to retry the `SendNotificationActivity`  and wait for the callback for the configured number of retries within the maximum time before escalation is needed.\r\n\r\nThe `[OrchestrationTrigger]` binding is used to indicate this is an orchestrator function.",
+      "line": 14,
+      "selection": {
+        "start": {
+          "line": 31,
+          "character": 24
+        },
+        "end": {
+          "line": 31,
+          "character": 48
+        }
+      },
+      "title": "SendNotificationOrchestrator purpose"
+    },
+    {
+      "file": "src/DurableFunctions.UseCases.NotifySupport/Orchestrators/SendNotificationOrchestrator.cs",
+      "description": "The `SendNotificationOrchestratorInput` is read from the orchestrator context.",
+      "line": 16,
+      "selection": {
+        "start": {
+          "line": 16,
+          "character": 42
+        },
+        "end": {
+          "line": 16,
+          "character": 75
+        }
+      },
+      "title": "SendNotificationOrchestrator read input"
+    },
+    {
+      "file": "src/DurableFunctions.UseCases.NotifySupport/Orchestrators/SendNotificationOrchestrator.cs",
+      "description": "Before the `SendNotificationActivity` is called and we wait for the callback event we need to store the instance ID of this sub-orchestrator. This is neccesary since events can only be raised for a specific orchestrator instance and we don't receive the instance ID as part of the callback request. Here we'll use Durable Entities to save the instance ID using the phone number as the key. In the `CallbackHttpClient` we retrieve the instance ID using the phone number from the request.\r\n\r\nFirst an EntityId is created based on the name of the entity (`NotificationOrchestratorInstanceEntity`) and the key (phone number of the support contact).",
+      "line": 19,
+      "selection": {
+        "start": {
+          "line": 19,
+          "character": 48
+        },
+        "end": {
+          "line": 19,
+          "character": 86
+        }
+      },
+      "title": "SendNotificationOrchestrator Durable Entities"
+    },
+    {
+      "file": "src/DurableFunctions.UseCases.NotifySupport/Entities/NotificationOrchestratorInstanceEntity.cs",
+      "description": "The `NotificationOrchestratorInstanceEntity` class defines the Durable Entity which captures the instance ID of the sub-orchestrator which is required to raise the callback event to correct `SendNotificationOrchestrator` instance.",
+      "line": 9,
+      "selection": {
+        "start": {
+          "line": 9,
+          "character": 18
+        },
+        "end": {
+          "line": 9,
+          "character": 56
+        }
+      },
+      "title": "NotificationOrchestratorInstanceEntity class"
+    },
+    {
+      "file": "src/DurableFunctions.UseCases.NotifySupport/Entities/NotificationOrchestratorInstanceEntity.cs",
+      "description": "Only the `InstanceId` property will be persisted to storage.",
+      "line": 12,
+      "title": "NotificationOrchestratorInstanceEntity InstanceId"
+    },
+    {
+      "file": "src/DurableFunctions.UseCases.NotifySupport/Entities/NotificationOrchestratorInstanceEntity.cs",
+      "description": "The `Set` method is used to update the `InstanceId` property from the `SendNotificationOrchestrator` function.",
+      "line": 14,
+      "title": "NotificationOrchestratorInstanceEntity Set"
+    },
+    {
+      "file": "src/DurableFunctions.UseCases.NotifySupport/Entities/NotificationOrchestratorInstanceEntity.cs",
+      "description": "The `[EntityTrigger]` binding indicates this is an entity function. The `DispatchAsync` method ensures we can perform operations on the entity.",
+      "line": 21,
+      "selection": {
+        "start": {
+          "line": 21,
+          "character": 20
+        },
+        "end": {
+          "line": 21,
+          "character": 33
+        }
+      },
+      "title": "NotificationOrchestratorInstanceEntity EntityTrigger"
+    },
+    {
+      "file": "src/DurableFunctions.UseCases.NotifySupport/Orchestrators/SendNotificationOrchestrator.cs",
+      "description": "The entity is signalled (one-way communication) to perform the `Set` operation with the `InstanceId` as the value.",
+      "line": 23,
+      "title": "SendNotificationOrchestrator SignalEntity"
+    },
+    {
+      "file": "src/DurableFunctions.UseCases.NotifySupport/Orchestrators/SendNotificationOrchestrator.cs",
+      "description": "An input object for the `SendNotificationActivity` function is built that contains the number of attempts sending the notification, the alert message, and the phone number of the support contact.",
+      "line": 28,
+      "selection": {
+        "start": {
+          "line": 30,
+          "character": 24
+        },
+        "end": {
+          "line": 30,
+          "character": 48
+        }
+      },
+      "title": "SendNotificationOrchestrator build input"
+    },
+    {
+      "file": "src/DurableFunctions.UseCases.NotifySupport/Orchestrators/SendNotificationOrchestrator.cs",
+      "description": "The `SendNotificationActivity` function is scheduled which takes care of sending the notification. The implementation of this activity can be skipped since we can simulate the callback by manually calling the `CallbackHttpClient` function. \r\n\r\nFor the real-life scenario you can implement a call to Twillio or Azure Communication Services. This should then also include configuration of the callback once the support contact has responded to the notification.",
+      "line": 31,
+      "title": "SendNotificationOrchestrator call SendNotificationActivity"
+    },
+    {
+      "file": "src/DurableFunctions.UseCases.NotifySupport/Orchestrators/SendNotificationOrchestrator.cs",
+      "description": "The Durable Functions API contains a very useful method to wait for events, where we can also specify the maximum time we want to wait for the event (and a fallback value is used). Here we divide the time for the next escalation by the maximum number of notification retries for this contact. This results in a time we'll use as a timeout for the event.",
+      "line": 33,
+      "title": "SendNotificationOrchestrator calculate wait time"
+    },
+    {
+      "file": "src/DurableFunctions.UseCases.NotifySupport/Orchestrators/SendNotificationOrchestrator.cs",
+      "description": "The sub-orchestrator now waits for an external event of type `bool` named `Callback`. The maximum wait time and the default value have been added to ensure we respect the escalation time between support contacts.",
+      "line": 36,
+      "selection": {
+        "start": {
+          "line": 36,
+          "character": 96
+        },
+        "end": {
+          "line": 36,
+          "character": 116
+        }
+      },
+      "title": "SendNotificationOrchestrator WaitForExternalEvent"
+    },
+    {
+      "file": "src/DurableFunctions.UseCases.NotifySupport/Orchestrators/SendNotificationOrchestrator.cs",
+      "description": "When a callback is not received within the given time and the number of notification attemps is lower than the maximum number of attempts the `NotificationAttemptCount` property of the input is increased and the orchestration is continued as new.",
+      "line": 42,
+      "selection": {
+        "start": {
+          "line": 40,
+          "character": 23
+        },
+        "end": {
+          "line": 40,
+          "character": 47
+        }
+      },
+      "title": "SendNotificationOrchestrator ContinueAsNew"
+    },
+    {
+      "file": "src/DurableFunctions.UseCases.NotifySupport/Orchestrators/SendNotificationOrchestrator.cs",
+      "description": "When the callback has been received or the maximum number of notification attempts (for this contact) has been reached the sub-orchestrator returns its result to the main orchestrator.",
+      "line": 50,
+      "title": "SendNotificationOrchestrator return result"
+    }
+  ]
+}
