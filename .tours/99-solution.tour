@@ -20,7 +20,7 @@
     },
     {
       "file": "src/DurableFunctions.UseCases.NotifySupport/Clients/NotifySupportHttpClient.cs",
-      "description": "An `HttpTrigger` function is used to act as the client function. This function will start a new instance of the `NotifySupportOrchestrator` function.\r\n\r\nThe `[DurableClient]` binding indicates this is a Durable Client function.",
+      "description": "An `HttpTrigger` function is used to act as the client function. This function will start a new instance of the `NotifySupportOrchestrator` function, the main orchestrator.\r\n\r\nThe `[DurableClient]` binding indicates this is a Durable Client function.",
       "line": 19,
       "selection": {
         "start": {
@@ -67,6 +67,22 @@
       "title": "NotifySupportHttpClient read env vars"
     },
     {
+      "file": "src/DurableFunctions.UseCases.NotifySupport/local.settings.json",
+      "description": "The `local.settings.json` contains the values for `MaxNotificationAttempts` and `WaitTimeForEscalationInSeconds`.",
+      "line": 10,
+      "selection": {
+        "start": {
+          "line": 10,
+          "character": 6
+        },
+        "end": {
+          "line": 10,
+          "character": 36
+        }
+      },
+      "title": "local.settings.json"
+    },
+    {
       "file": "src/DurableFunctions.UseCases.NotifySupport/Clients/NotifySupportHttpClient.cs",
       "description": "I regularly use Builders to create new object instances. Here the `NotifySupportOrchestratorInputBuilder` is called to create the input for the `NotifySupportOrchestrator`.",
       "line": 29,
@@ -81,6 +97,22 @@
         }
       },
       "title": "NotifySupportHttpClient build input"
+    },
+    {
+      "file": "src/DurableFunctions.UseCases.NotifySupport/Models/NotifySupportOrchestratorInput.cs",
+      "description": "The `NotifySupportOrchestratorInput` defines the input for the `NotifySupportOrchestrator` function, the main orchestrator.\r\n\r\nThe orchestrator needs the following information:\r\n\r\n- The message and severity of the alert.\r\n- The list of support contacts.\r\n- The current support contact.\r\n- The wait time between escalations.\r\n- The max number of notification attempts per contact.",
+      "line": 11,
+      "selection": {
+        "start": {
+          "line": 3,
+          "character": 18
+        },
+        "end": {
+          "line": 3,
+          "character": 43
+        }
+      },
+      "title": "NotifySupportOrchestratorInput"
     },
     {
       "file": "src/DurableFunctions.UseCases.NotifySupport/Clients/NotifySupportHttpClient.cs",
@@ -169,6 +201,44 @@
       "title": "NotifySupportOrchestrator get support contacts"
     },
     {
+      "file": "src/DurableFunctions.UseCases.NotifySupport/Activities/GetSupportContactActivity.cs",
+      "description": "The `GetSupportContactActivity` function uses two bindings:\r\n\r\n- `[ActivityTrigger]` to indicate this is an activity function.\r\n- `[Table]` input binding configured to the `SupportContact` table.",
+      "line": 14,
+      "selection": {
+        "start": {
+          "line": 16,
+          "character": 46
+        },
+        "end": {
+          "line": 16,
+          "character": 66
+        }
+      },
+      "title": "GetSupportContactActivity bindings"
+    },
+    {
+      "file": "src/DurableFunctions.UseCases.NotifySupport/Activities/GetSupportContactActivity.cs",
+      "description": "A `TableQuery` is created to query and filter the `SupportContactEntity` objects based on the team they are in (this is the `PartitionKey`), and they are ordered by their `Order` property.",
+      "line": 22,
+      "title": "GetSupportContactActivity filter"
+    },
+    {
+      "file": "src/DurableFunctions.UseCases.NotifySupport/Activities/GetSupportContactActivity.cs",
+      "description": "The query is executed on the `CloudTable` from the input binding and returns a collection of `SupportContactEntity`.",
+      "line": 23,
+      "selection": {
+        "start": {
+          "line": 23,
+          "character": 59
+        },
+        "end": {
+          "line": 23,
+          "character": 79
+        }
+      },
+      "title": "GetSupportContactActivity ExecuteQuery"
+    },
+    {
       "file": "src/DurableFunctions.UseCases.NotifySupport/Orchestrators/NotifySupportOrchestrator.cs",
       "description": "Once we have the support contacts we add them to the `NotifySupportOrchestratorInput` object so we're reusing it when `ContinueAsNew` is used on the orchestrator.",
       "line": 26,
@@ -199,6 +269,22 @@
         }
       },
       "title": "NotifySupportOrchestrator build input"
+    },
+    {
+      "file": "src/DurableFunctions.UseCases.NotifySupport/Models/SendNotificationOrchestratorInput.cs",
+      "description": "The `SendNotificationOrchestratorInput` is the input for the `SendNotificationOrchestrator` sub-orchestrator function. The sub-orchestrator needs to know the following:\r\n\r\n- Who to send the notification to.\r\n- The message for the notification.\r\n- The current notification attempt.\r\n- The maximum notificaiton attempts.\r\n- The max time between escalations.\r\n",
+      "line": 10,
+      "selection": {
+        "start": {
+          "line": 3,
+          "character": 18
+        },
+        "end": {
+          "line": 3,
+          "character": 46
+        }
+      },
+      "title": "SendNotificationOrchestratorInput"
     },
     {
       "file": "src/DurableFunctions.UseCases.NotifySupport/Orchestrators/NotifySupportOrchestrator.cs",
@@ -375,6 +461,21 @@
         }
       },
       "title": "SendNotificationOrchestrator WaitForExternalEvent"
+    },
+    {
+      "file": "src/DurableFunctions.UseCases.NotifySupport/host.json",
+      "description": "To ensure more accurate timings of the WaitForExternalEvent operation set `storageProvider.maxQueuePollingInterval` to a lower value (default is 30 seconds).",
+      "line": 7,
+      "selection": {
+        "start": {
+          "line": 6,
+          "character": 14
+        },
+        "end": {
+          "line": 6,
+          "character": 29
+        }
+      }
     },
     {
       "file": "src/DurableFunctions.UseCases.NotifySupport/Orchestrators/SendNotificationOrchestrator.cs",
