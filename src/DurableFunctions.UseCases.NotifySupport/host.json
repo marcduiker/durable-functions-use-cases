@@ -4,7 +4,7 @@
         "durableTask": {
             "hubName": "%TaskHubName%",
             "storageProvider": {
-              "maxQueuePollingInterval": "00:00:03"
+              "maxQueuePollingInterval": "00:00:01"
             }
         }
     },

@@ -7,6 +7,6 @@
     "SupportContactStorage" : "UseDevelopmentStorage=true",
     "SupportContactTableName" : "SupportContacts",
     "MaxNotificationAttempts" : 3,
-    "WaitTimeForEscalationInSeconds" : 90
+    "WaitTimeForEscalationInSeconds" : 60
   }
 }
