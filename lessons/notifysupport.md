@@ -4,13 +4,15 @@
 
 The goal of this challenge is to write a Function App which responds to alerts (posted as HTTP request) and notifies members of the support team so they can investigate the issue.
 
+![Notify Support overview diagram](../diagrams/notifysupport_overview.png)
+
 ### Recording
 
 There is a [recording available on YouTube](https://youtu.be/O6YCRhyqR2w) which explains this challenge and the relevant Durable Functions theory. The solution of this challenge is covered in a separate video.
 
 ## Flow Diagram
 
-![Notify Support Flow diagram](../diagrams/notifysupport.png)
+![Notify Support Flow diagram](../diagrams/notifysupport_functions1.png)
 
 ## Prerequisites
 

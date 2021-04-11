@@ -1,6 +1,6 @@
 # Tips for building the Notify Support solution
 
-![](../diagrams/notifysupport_functions.png)
+![](../diagrams/notifysupport_functions2.png)
 
 ## Main orchestrator
 

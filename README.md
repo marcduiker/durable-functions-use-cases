@@ -8,7 +8,7 @@ These challenges do assume some experience with Azure Functions (in .NET) and a 
 
 Write a Function App that responds to alerts and notifies members of a support team to investigate the issue.
 
-![Notify Support Flow diagram](/diagrams/notifysupport.png)
+![Notify Support overview diagram](diagrams/notifysupport_overview.png)
 
 This challenge combines sub-orchestrations, eternal orchestrations, waiting for external events, and using stateful entities.
 
