@@ -34,7 +34,8 @@ namespace DurableFunctions.UseCases.NotifySupport
                     nameof(SendNotificationOrchestrator),
                     notificationOrchestratorInput);
             
-            if (!notificationResult.CallbackReceived && input.SupportContacts.Last() != notificationOrchestratorInput.SupportContact)
+            if (!notificationResult.CallbackReceived &&
+                notificationOrchestratorInput.SupportContact != input.SupportContacts.Last())
             {
                 // Calls have not been answered, let's try the next number.
                 input.SupportContactIndex++;
@@ -46,6 +47,5 @@ namespace DurableFunctions.UseCases.NotifySupport
                 logger.LogInformation($"=== Completed {nameof(NotifySupportOrchestrator)} for {notificationResult.PhoneNumber} with callback received={notificationResult.CallbackReceived} on attempt={notificationResult.Attempt}. ===");
             }
         }
-        
     }
 }
