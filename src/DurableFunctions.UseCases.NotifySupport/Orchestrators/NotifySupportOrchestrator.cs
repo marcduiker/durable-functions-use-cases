@@ -26,9 +26,7 @@ namespace DurableFunctions.UseCases.NotifySupport
                 input.SupportContacts = supportContacts.ToArray();
             }
 
-            var notificationOrchestratorInput = SendNotificationOrchestratorInputBuilder.Build(
-                input,
-                input.SupportContactIndex);
+            var notificationOrchestratorInput = SendNotificationOrchestratorInputBuilder.Build(input);
             
             var notificationResult = await context.CallSubOrchestratorAsync<SendNotificationOrchestratorResult>(
                     nameof(SendNotificationOrchestrator),
@@ -37,7 +35,7 @@ namespace DurableFunctions.UseCases.NotifySupport
             if (!notificationResult.CallbackReceived &&
                 notificationOrchestratorInput.SupportContact != input.SupportContacts.Last())
             {
-                // Calls have not been answered, let's try the next number.
+                // Calls have not been answered, let's try the next contact.
                 input.SupportContactIndex++;
                 logger.LogInformation($"=== Next Contact={input.SupportContacts[input.SupportContactIndex].PhoneNumber} ===");
                 context.ContinueAsNew(input);

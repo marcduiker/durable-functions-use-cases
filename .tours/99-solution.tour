@@ -256,8 +256,8 @@
     },
     {
       "file": "src/DurableFunctions.UseCases.NotifySupport/Orchestrators/NotifySupportOrchestrator.cs",
-      "description": "A builder is used to create the input object for the sub-orchestratot (`SendNotificationOrchestrator`).",
-      "line": 31,
+      "description": "A builder is used to create the input object for the sub-orchestrator (`SendNotificationOrchestrator`).",
+      "line": 29,
       "selection": {
         "start": {
           "line": 34,
@@ -289,7 +289,7 @@
     {
       "file": "src/DurableFunctions.UseCases.NotifySupport/Orchestrators/NotifySupportOrchestrator.cs",
       "description": "The sub-orchestrator, `SendNotificationOrchestrator`, is scheduled and awaited. The response is a `SendNotificationOrchestratorResult` object.",
-      "line": 35,
+      "line": 33,
       "title": "NotifySupportOrchestrator call sub-orchestrator"
     },
     {
@@ -311,7 +311,7 @@
     {
       "file": "src/DurableFunctions.UseCases.NotifySupport/Orchestrators/NotifySupportOrchestrator.cs",
       "description": "When no callback event has been received and the current support contact is not equal to the last contact in the support contact array, the `SupportContactIndex` is incremented by one and the (main) orchestrator is continued as new instance. This means the orchestrator will now use the next support contact in the list to try and notify.",
-      "line": 43,
+      "line": 41,
       "title": "NotifySupportOrchestrator  ContinueAsNew"
     },
     {
