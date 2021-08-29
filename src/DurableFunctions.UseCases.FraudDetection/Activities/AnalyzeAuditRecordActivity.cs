@@ -1,20 +1,26 @@
+using System;
+using System.Threading.Tasks;
+using DurableFunctions.UseCases.FraudDetection.Models;
+using DurableFunctions.UseCases.FraudDetection.Services;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.DurableTask;
+
 namespace DurableFunctions.UseCases.FraudDetection.Activities
 {
     public class AnalyzeAuditRecordActivity
     {
-         private readonly ICustomerDataService _customerDataService;
+         private readonly IFraudDetectionService _fraudDetectionService;
 
-         public GetCustomerActivity(ICustomerDataService customerDataService)
+         public AnalyzeAuditRecordActivity(IFraudDetectionService fraudDetectionService)
          {
-             _customerDataService = customerDataService;
+             _fraudDetectionService = fraudDetectionService;
          }
 
         [FunctionName(nameof(AnalyzeAuditRecordActivity))]
-        public async Task<Customer> Run(
-            [ActivityTrigger] AuditRecord auditRecord,
-            ILogger logger)
+        public async Task<Guid> Run(
+            [ActivityTrigger] AuditRecord auditRecord)
         {
-            await _customerDataService.GetCustomerAsync(bankAccount);
+            await _fraudDetectionService.AnalyzeAuditRecord(auditRecord);
         }
     }
 }

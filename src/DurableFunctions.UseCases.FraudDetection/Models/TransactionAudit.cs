@@ -1,3 +1,5 @@
+using System;
+
 namespace DurableFunctions.UseCases.FraudDetection.Models
 {
     public class AuditRecord

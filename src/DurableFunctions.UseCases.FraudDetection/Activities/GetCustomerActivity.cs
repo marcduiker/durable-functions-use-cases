@@ -1,3 +1,9 @@
+using System.Threading.Tasks;
+using DurableFunctions.UseCases.FraudDetection.Models;
+using DurableFunctions.UseCases.FraudDetection.Services;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.DurableTask;
+
 namespace DurableFunctions.UseCases.FraudDetection.Activities
 {
     public class GetCustomerActivity
@@ -11,8 +17,7 @@ namespace DurableFunctions.UseCases.FraudDetection.Activities
 
         [FunctionName(nameof(GetCustomerActivity))]
         public async Task<Customer> Run(
-            [ActivityTrigger] string bankAccount,
-            ILogger logger)
+            [ActivityTrigger] string bankAccount)
         {
             await _customerDataService.GetCustomerAsync(bankAccount);
         }

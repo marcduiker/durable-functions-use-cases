@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"name": "Lesson",
+			"path": "lessons/FraudDetection"
+		},
+		{
+			"name": "Source Code",
+			"path": "src/DurableFunctions.UseCases.FraudDetection"
+		}
+	],
+	"settings": {
+		"debug.internalConsoleOptions": "neverOpen"
+	},
+	"extensions": {
+		"recommendations": [
+			"ms-azuretools.vscode-azurefunctions",
+			"ms-dotnettools.csharp",
+			"vsls-contrib.codetour"
+		  ]
+	}
+}
