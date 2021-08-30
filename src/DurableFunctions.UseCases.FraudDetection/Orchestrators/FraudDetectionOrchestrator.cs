@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using DurableFunctions.UseCases.Entities;
 using DurableFunctions.UseCases.FraudDetection.Activities;
 using DurableFunctions.UseCases.FraudDetection.Builders;
 using DurableFunctions.UseCases.FraudDetection.Models;
@@ -31,12 +32,27 @@ namespace DurableFunctions.UseCases.FraudDetection
                 creditor,
                 debtor);
 
-            var analyzedRecordId = await context.CallActivityAsync<Guid>(
+            var analyzedRecordId = await context.CallActivityAsync<string>(
                 nameof(AnalyzeAuditRecordActivity),
                 auditRecord);
 
-            // TODO store Id
-            // TODO wait for event to continue
+            // Create an entity based on the analyzed record Id to store the current orchestration Id.
+            var entityId = new EntityId(
+                nameof(FraudDetectionOrchestratorEntity), 
+                analyzedRecordId);
+            context.SignalEntity(
+                entityId,
+                nameof(FraudDetectionOrchestratorEntity.Set),
+                context.InstanceId);
+            
+            var timeOut = TimeSpan.FromMinutes(5);
+            var defaultResult = true;
+            var isSuspiciousTransaction = await context.WaitForExternalEvent<bool>(
+                "FraudResult",
+                timeOut,
+                defaultResult);
+
+            auditRecord.IsSuspiciousTransaction = isSuspiciousTransaction;
 
             await context.CallActivityAsync(
                 nameof(StoreAuditRecordActivity),

@@ -17,7 +17,7 @@ namespace DurableFunctions.UseCases.FraudDetection.Activities
          }
 
         [FunctionName(nameof(AnalyzeAuditRecordActivity))]
-        public async Task<Guid> Run(
+        public async Task<string> Run(
             [ActivityTrigger] AuditRecord auditRecord)
         {
             return await _fraudDetectionService.AnalyzeAuditRecord(auditRecord);

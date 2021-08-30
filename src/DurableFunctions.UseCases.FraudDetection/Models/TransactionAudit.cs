@@ -8,5 +8,6 @@ namespace DurableFunctions.UseCases.FraudDetection.Models
         public Transaction Transaction { get; set; }
         public Customer Creditor { get; set; }
         public Customer Debtor { get; set; }
+        public bool IsSuspiciousTransaction { get; set; }
     }
 }
