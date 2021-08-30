@@ -20,7 +20,7 @@ namespace DurableFunctions.UseCases.FraudDetection.Activities
         public async Task<Guid> Run(
             [ActivityTrigger] AuditRecord auditRecord)
         {
-            await _fraudDetectionService.AnalyzeAuditRecord(auditRecord);
+            return await _fraudDetectionService.AnalyzeAuditRecord(auditRecord);
         }
     }
 }

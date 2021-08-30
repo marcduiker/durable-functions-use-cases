@@ -19,7 +19,7 @@ namespace DurableFunctions.UseCases.FraudDetection.Activities
         public async Task<Customer> Run(
             [ActivityTrigger] string bankAccount)
         {
-            await _customerDataService.GetCustomerAsync(bankAccount);
+            return await _customerDataService.GetCustomerAsync(bankAccount);
         }
     }
 }
