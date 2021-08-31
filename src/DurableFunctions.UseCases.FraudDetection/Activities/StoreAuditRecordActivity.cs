@@ -8,7 +8,7 @@ namespace DurableFunctions.UseCases
     public class StoreAuditRecordActivity
     {
         [FunctionName(nameof(StoreAuditRecordActivity))]
-        [return: CosmosDB()]
+        //[return: CosmosDB()]
         public AuditRecord Run(
             [ActivityTrigger] AuditRecord auditRecord)
         {
