@@ -7,6 +7,10 @@
 		{
 			"name": "Source Code",
 			"path": "src/DurableFunctions.UseCases.FraudDetection"
+		},
+		{
+			"name": "Test",
+			"path": "tests/FraudDetection"
 		}
 	],
 	"settings": {

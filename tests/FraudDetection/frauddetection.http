@@ -1,0 +1,14 @@
+# @name fraudDetectionRequest
+POST http://localhost:7071/api/FraudDetectionClient
+Content-Type: application/json
+
+{}
+
+### Get status of orchestration
+@orchestratorId = {{fraudDetectionRequest.response.body.$.id}}
+GET http://localhost:7071/runtime/webhooks/durabletask/instances/{{orchestratorId}}
+    ?taskHub=FraudDetectionV1
+
+### Send webhook event
+
+
