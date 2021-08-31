@@ -1,12 +1,12 @@
-using System;
-using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
+using Microsoft.Azure.WebJobs.Extensions.DurableTask;
+using DurableFunctions.UseCases.FraudDetection.Builders;
+using DurableFunctions.UseCases.FraudDetection;
 
 namespace DurableFunctions.UseCases
 {
@@ -14,22 +14,18 @@ namespace DurableFunctions.UseCases
     {
         [FunctionName(nameof(FraudDetectionClient))]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequest request,
+            [DurableClient] IDurableClient client,
             ILogger log)
         {
-            log.LogInformation("C# HTTP trigger function processed a request.");
+            // Creating a random transaction, normally the transaction would be in the body of the request.
+            var fakeTransaction = FakeTransactionBuilder.Create();
 
-            string name = req.Query["name"];
+            var instanceId = await client.StartNewAsync(
+                nameof(FraudDetectionOrchestrator), 
+                fakeTransaction);
 
-            string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            dynamic data = JsonConvert.DeserializeObject(requestBody);
-            name = name ?? data?.name;
-
-            string responseMessage = string.IsNullOrEmpty(name)
-                ? "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response."
-                : $"Hello, {name}. This HTTP triggered function executed successfully.";
-
-            return new OkObjectResult(responseMessage);
+            return client.CreateCheckStatusResponse(request, instanceId);
         }
     }
 }

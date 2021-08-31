@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using DurableFunctions.UseCases.Builders;
 using DurableFunctions.UseCases.FraudDetection.Models;
 
 namespace DurableFunctions.UseCases.FraudDetection.Services
@@ -7,8 +8,7 @@ namespace DurableFunctions.UseCases.FraudDetection.Services
     {
         public Task<Customer> GetCustomerAsync(string bankAccount)
         {
-            // TODO: create a fake customer
-            return Task.FromResult(new Customer());
+            return Task.FromResult(FakeCustomerBuilder.Create(bankAccount));
         }
     }
 }
