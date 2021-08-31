@@ -6,9 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.Azure.WebJobs.Extensions.DurableTask;
 using DurableFunctions.UseCases.FraudDetection.Builders;
-using DurableFunctions.UseCases.FraudDetection;
 
-namespace DurableFunctions.UseCases
+namespace DurableFunctions.UseCases.FraudDetection.Clients
 {
     public static class FraudDetectionClient
     {

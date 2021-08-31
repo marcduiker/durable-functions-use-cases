@@ -1,7 +1,7 @@
 using Bogus;
 using DurableFunctions.UseCases.FraudDetection.Models;
 
-namespace DurableFunctions.UseCases.Builders
+namespace DurableFunctions.UseCases.FraudDetection.Builders
 {
     public static class FakeCustomerBuilder
     {

@@ -4,10 +4,10 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.Azure.WebJobs.Extensions.DurableTask;
-using DurableFunctions.UseCases.Entities;
 using DurableFunctions.UseCases.FraudDetection.Models;
+using DurableFunctions.UseCases.FraudDetection.Entities;
 
-namespace DurableFunctions.UseCases
+namespace DurableFunctions.UseCases.FraudDetection.Clients
 {
     public static class FraudResultWebhookClient
     {

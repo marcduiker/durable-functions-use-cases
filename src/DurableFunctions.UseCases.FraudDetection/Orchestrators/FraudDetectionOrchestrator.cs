@@ -1,8 +1,8 @@
 using System;
 using System.Threading.Tasks;
-using DurableFunctions.UseCases.Entities;
 using DurableFunctions.UseCases.FraudDetection.Activities;
 using DurableFunctions.UseCases.FraudDetection.Builders;
+using DurableFunctions.UseCases.FraudDetection.Entities;
 using DurableFunctions.UseCases.FraudDetection.Models;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.DurableTask;
@@ -19,18 +19,20 @@ namespace DurableFunctions.UseCases.FraudDetection
         {
             var transaction = context.GetInput<Transaction>();
 
-            var creditor = await context.CallActivityAsync<Customer>(
+            var creditorTask = context.CallActivityAsync<Customer>(
                 nameof(GetCustomerActivity),
                 transaction.CreditorBankAccount);
 
-            var debtor = await context.CallActivityAsync<Customer>(
+            var debtorTask = context.CallActivityAsync<Customer>(
                 nameof(GetCustomerActivity),
                 transaction.DebtorBankAccount);
 
+            await Task.WhenAll(creditorTask, debtorTask);
+
             var auditRecord = AuditRecordBuilder.Create(
                 transaction,
-                creditor,
-                debtor);
+                creditorTask.Result,
+                debtorTask.Result);
 
             var analyzedRecordId = await context.CallActivityAsync<string>(
                 nameof(AnalyzeAuditRecordActivity),

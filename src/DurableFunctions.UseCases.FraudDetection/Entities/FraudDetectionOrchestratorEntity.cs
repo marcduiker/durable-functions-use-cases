@@ -3,7 +3,7 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.DurableTask;
 using Newtonsoft.Json;
 
-namespace DurableFunctions.UseCases.Entities
+namespace DurableFunctions.UseCases.FraudDetection.Entities
 {
     [JsonObject(MemberSerialization.OptIn)]
     public class FraudDetectionOrchestratorEntity

@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using DurableFunctions.UseCases.Builders;
+using DurableFunctions.UseCases.FraudDetection.Builders;
 using DurableFunctions.UseCases.FraudDetection.Models;
 
 namespace DurableFunctions.UseCases.FraudDetection.Services
