@@ -27,18 +27,18 @@ namespace DurableFunctions.UseCases.FraudDetection
                 customers.Creditor,
                 customers.Debtor);
 
-            var analyzedRecordId = await context.CallActivityAsync<string>(
-                nameof(AnalyzeAuditRecordActivity),
-                auditRecord);
-
-            // Create an entity based on the analyzed record Id to store the current orchestration Id.
+            // Create an entity based on the record Id to store the current orchestration Id.
             var entityId = new EntityId(
                 nameof(FraudDetectionOrchestratorEntity), 
-                analyzedRecordId);
+                auditRecord.Id);
             context.SignalEntity(
                 entityId,
                 nameof(FraudDetectionOrchestratorEntity.Set),
                 context.InstanceId);
+
+            await context.CallActivityAsync(
+                nameof(AnalyzeAuditRecordActivity),
+                auditRecord);
             
             var timeOut = TimeSpan.FromMinutes(5);
             var defaultResult = true;

@@ -25,7 +25,7 @@ namespace DurableFunctions.UseCases.FraudDetection.Activities
         // GitHub is being used here as since that can trigger webhooks easily. 
         // In this case the webhook will be called when a new GitHub issue is created.
         [FunctionName(nameof(AnalyzeAuditRecordActivity))]
-        public async Task<string> Run(
+        public async Task Run(
             [ActivityTrigger] AuditRecord auditRecord)
         {
             var fakeFraudResultIssue = FakeFraudResultIssueBuilder.Create(auditRecord);
@@ -35,8 +35,6 @@ namespace DurableFunctions.UseCases.FraudDetection.Activities
                 owner,
                 repo,
                 fakeFraudResultIssue);
-
-            return auditRecord.Id;
         }
     }
 }

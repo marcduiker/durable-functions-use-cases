@@ -2,7 +2,14 @@
 POST http://localhost:7071/api/FraudDetectionClient
 Content-Type: application/json
 
-{}
+{
+    "id" : "{{$guid}}",
+    "creditorBankAccount" : "CR{{$guid}}",
+    "debtorBankAccount" : "DB{{$guid}}",
+    "amount" : "{{$randomInt 100 1000}}",
+    "currency" : "USD",
+    "timeStampUtc" : "{{$datetime iso8601}}",
+}
 
 ### Get status of orchestration
 @orchestratorId = {{fraudDetectionRequest.response.body.$.id}}

@@ -1,4 +1,3 @@
-using System;
 using DurableFunctions.UseCases.FraudDetection.Models;
 
 namespace DurableFunctions.UseCases.FraudDetection.Builders
