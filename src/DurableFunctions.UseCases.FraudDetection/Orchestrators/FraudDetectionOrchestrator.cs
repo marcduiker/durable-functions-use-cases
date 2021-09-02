@@ -43,7 +43,7 @@ namespace DurableFunctions.UseCases.FraudDetection
             var timeOut = TimeSpan.FromMinutes(5);
             var defaultResult = true;
             var isSuspiciousTransaction = await context.WaitForExternalEvent<bool>(
-                "FraudResult",
+                Constants.FraudResultCompletedEvent,
                 timeOut,
                 defaultResult);
 

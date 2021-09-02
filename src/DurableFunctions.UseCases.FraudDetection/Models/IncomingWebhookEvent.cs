@@ -6,6 +6,9 @@ namespace DurableFunctions.UseCases.FraudDetection.Models
     {
         [JsonProperty("issue")]
         public Payload Payload { get; set; }
+
+        [JsonProperty("action")]
+        public string Action { get; set; }
     }
 
     public class Payload
@@ -15,6 +18,8 @@ namespace DurableFunctions.UseCases.FraudDetection.Models
 
         [JsonProperty("body")]
         public string Body { get; set; }
+        
+        [JsonIgnore]
         public FraudResult FraudResult => !string.IsNullOrEmpty(Body) ? JsonConvert.DeserializeObject<FraudResult>(Body) : null;
         
     }

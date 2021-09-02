@@ -17,24 +17,32 @@ namespace DurableFunctions.UseCases.FraudDetection.Clients
             [DurableClient] IDurableClient client,
             ILogger log)
         {
-            var fraudResult = webhookEvent.Payload.FraudResult;
-            
-            var entityId = new EntityId(
-                nameof(FraudDetectionOrchestratorEntity), 
-                fraudResult.RecordId);
-            var entityStateResponse = await client.ReadEntityStateAsync<FraudDetectionOrchestratorEntity>(entityId);
-            if (entityStateResponse.EntityExists)
+            if (webhookEvent.Action == Constants.OpenedIssue)
             {
-                await client.RaiseEventAsync(
-                    entityStateResponse.EntityState.InstanceId,
-                    "FraudResult",
-                    fraudResult.IsSuspiciousTransaction);
+                var fraudResult = webhookEvent.Payload.FraudResult;
 
-                return new AcceptedResult();
+                var entityId = new EntityId(
+                    nameof(FraudDetectionOrchestratorEntity),
+                    fraudResult.RecordId);
+                var entityStateResponse = await client.ReadEntityStateAsync<FraudDetectionOrchestratorEntity>(entityId);
+                if (entityStateResponse.EntityExists)
+                {
+                    await client.RaiseEventAsync(
+                        entityStateResponse.EntityState.InstanceId,
+                        Constants.FraudResultCompletedEvent,
+                        fraudResult.IsSuspiciousTransaction);
+
+                    return new AcceptedResult();
+                }
+                else
+                {
+                    return new BadRequestObjectResult($"Entity {entityId} does not exist.");
+                }
             }
             else
             {
-                return new BadRequestObjectResult($"Entity {entityId} does not exist.");
+                // We're not interested in any other webhook actions so just send a 202 back.
+                return new AcceptedResult();
             }
         }
     }
