@@ -19,20 +19,13 @@ namespace DurableFunctions.UseCases.FraudDetection
         {
             var transaction = context.GetInput<Transaction>();
 
-            var creditorTask = context.CallActivityAsync<Customer>(
-                nameof(GetCustomerActivity),
-                transaction.CreditorBankAccount);
-
-            var debtorTask = context.CallActivityAsync<Customer>(
-                nameof(GetCustomerActivity),
-                transaction.DebtorBankAccount);
-
-            await Task.WhenAll(creditorTask, debtorTask);
+            (Customer Creditor, Customer Debtor) customers = await GetCustomersForTransactionAsync(context, transaction);
 
             var auditRecord = AuditRecordBuilder.Create(
+                context.NewGuid().ToString(),
                 transaction,
-                creditorTask.Result,
-                debtorTask.Result);
+                customers.Creditor,
+                customers.Debtor);
 
             var analyzedRecordId = await context.CallActivityAsync<string>(
                 nameof(AnalyzeAuditRecordActivity),
@@ -59,6 +52,23 @@ namespace DurableFunctions.UseCases.FraudDetection
             await context.CallActivityAsync(
                 nameof(StoreAuditRecordActivity),
                 auditRecord);
+        }
+
+        private async Task<(Customer Creditor, Customer Debtor)> GetCustomersForTransactionAsync(
+            IDurableOrchestrationContext context,
+            Transaction transaction)
+        {
+            var creditorTask = context.CallActivityAsync<Customer>(
+                nameof(GetCustomerActivity),
+                transaction.CreditorBankAccount);
+
+            var debtorTask = context.CallActivityAsync<Customer>(
+                nameof(GetCustomerActivity),
+                transaction.DebtorBankAccount);
+
+            await Task.WhenAll(creditorTask, debtorTask);
+            
+            return (creditorTask.Result, debtorTask.Result);
         }
     }
 }

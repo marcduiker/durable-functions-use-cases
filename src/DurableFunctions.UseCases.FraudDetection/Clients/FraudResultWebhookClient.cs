@@ -13,10 +13,12 @@ namespace DurableFunctions.UseCases.FraudDetection.Clients
     {
         [FunctionName(nameof(FraudResultWebhookClient))]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] FraudResult fraudResult,
+            [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] IncomingWebhookEvent webhookEvent,
             [DurableClient] IDurableClient client,
             ILogger log)
         {
+            var fraudResult = webhookEvent.Payload.FraudResult;
+            
             var entityId = new EntityId(
                 nameof(FraudDetectionOrchestratorEntity), 
                 fraudResult.RecordId);
@@ -27,13 +29,13 @@ namespace DurableFunctions.UseCases.FraudDetection.Clients
                     entityStateResponse.EntityState.InstanceId,
                     "FraudResult",
                     fraudResult.IsSuspiciousTransaction);
+
+                return new AcceptedResult();
             }
             else
             {
-                log.LogError($"Entity {entityId} does not exist");
+                return new BadRequestObjectResult($"Entity {entityId} does not exist.");
             }
-
-            return new AcceptedResult();
         }
     }
 }
