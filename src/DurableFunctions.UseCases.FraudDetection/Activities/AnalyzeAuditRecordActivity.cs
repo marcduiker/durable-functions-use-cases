@@ -1,20 +1,19 @@
 using System;
 using System.Threading.Tasks;
-using DurableFunctions.UseCases.FraudDetection.Builders;
 using DurableFunctions.UseCases.FraudDetection.Models;
+using DurableFunctions.UseCases.FraudDetection.Services;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.DurableTask;
-using Octokit;
 
 namespace DurableFunctions.UseCases.FraudDetection.Activities
 {
     public class AnalyzeAuditRecordActivity
     {
-         private readonly IGitHubClient _githubClient;
+         private readonly IFraudAnalysisService _fraudAnalysisService;
 
-         public AnalyzeAuditRecordActivity(IGitHubClient githubClient)
+         public AnalyzeAuditRecordActivity(IFraudAnalysisService fraudAnalysisService)
          {
-             _githubClient = githubClient;
+             _fraudAnalysisService = fraudAnalysisService;
          }
 
         // This function simulates a call to a 3rd party service that analyses the AuditRecord.
@@ -28,13 +27,15 @@ namespace DurableFunctions.UseCases.FraudDetection.Activities
         public async Task Run(
             [ActivityTrigger] AuditRecord auditRecord)
         {
-            var fakeFraudResultIssue = FakeFraudResultIssueBuilder.Create(auditRecord);
             var owner = Environment.GetEnvironmentVariable("GitHubOwner");
             var repo = Environment.GetEnvironmentVariable("GitHubRepoName");
-            var createdIssue = await _githubClient.Issue.Create(
-                owner,
-                repo,
-                fakeFraudResultIssue);
+            var workflowFile = Environment.GetEnvironmentVariable("GitHubWorkflowFile");
+            var input = new WorkflowDispatchEvent(auditRecord.Id);
+            var response = await _fraudAnalysisService.AnalyzeAsync(input, owner, repo, workflowFile);
+            if (!response.IsSuccessStatusCode)
+            {
+                throw response.Error.GetBaseException();
+            }
         }
     }
 }

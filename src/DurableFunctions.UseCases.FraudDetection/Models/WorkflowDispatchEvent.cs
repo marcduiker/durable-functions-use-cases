@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+
 namespace DurableFunctions.UseCases.FraudDetection.Models
 {
     public class WorkflowDispatchEvent
@@ -5,11 +7,13 @@ namespace DurableFunctions.UseCases.FraudDetection.Models
         public WorkflowDispatchEvent(string recordId)
         {
             Ref = "main";
-            Options = new { recordId = recordId };
+            Inputs = new { recordId = recordId };
         }
 
+        [JsonProperty("ref")]
         public string Ref { get; set;}
 
-        public object Options { get; set; }
+        [JsonProperty("inputs")]
+        public object Inputs { get; set; }
     }
 }
