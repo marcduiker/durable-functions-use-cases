@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Azure.WebJobs.Extensions.DurableTask;
 using DurableFunctions.UseCases.FraudDetection.Models;
 using DurableFunctions.UseCases.FraudDetection.Entities;
+using System.Net.Http;
 
 namespace DurableFunctions.UseCases.FraudDetection.Clients
 {
@@ -13,36 +14,26 @@ namespace DurableFunctions.UseCases.FraudDetection.Clients
     {
         [FunctionName(nameof(FraudResultWebhookClient))]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] IncomingWebhookEvent webhookEvent,
+            [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] FraudResult fraudResult,
             [DurableClient] IDurableClient client,
             ILogger log)
         {
-            if (webhookEvent.Action == Constants.OpenedIssue)
+            var entityId = new EntityId(
+                nameof(FraudDetectionOrchestratorEntity),
+                fraudResult.RecordId);
+
+            var entityStateResponse = await client.ReadEntityStateAsync<FraudDetectionOrchestratorEntity>(entityId);
+            if (entityStateResponse.EntityExists)
             {
-                var fraudResult = webhookEvent.Payload.FraudResult;
-
-                var entityId = new EntityId(
-                    nameof(FraudDetectionOrchestratorEntity),
-                    fraudResult.RecordId);
-                var entityStateResponse = await client.ReadEntityStateAsync<FraudDetectionOrchestratorEntity>(entityId);
-                if (entityStateResponse.EntityExists)
-                {
-                    await client.RaiseEventAsync(
-                        entityStateResponse.EntityState.InstanceId,
-                        Constants.FraudResultCompletedEvent,
-                        fraudResult.IsSuspiciousTransaction);
-
-                    return new AcceptedResult();
-                }
-                else
-                {
-                    return new BadRequestObjectResult($"Entity {entityId} does not exist.");
-                }
+                await client.RaiseEventAsync(
+                    entityStateResponse.EntityState.InstanceId,
+                    Constants.FraudResultCompletedEvent,
+                    fraudResult.IsSuspiciousTransaction);
+                return new AcceptedResult();
             }
             else
             {
-                // We're not interested in any other webhook actions so just send a 202 back.
-                return new AcceptedResult();
+                return new BadRequestObjectResult($"Entity {entityId} does not exist.");
             }
         }
     }
