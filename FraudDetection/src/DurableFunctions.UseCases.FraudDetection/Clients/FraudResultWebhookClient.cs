@@ -6,7 +6,6 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Azure.WebJobs.Extensions.DurableTask;
 using DurableFunctions.UseCases.FraudDetection.Models;
 using DurableFunctions.UseCases.FraudDetection.Entities;
-using System.Net.Http;
 
 namespace DurableFunctions.UseCases.FraudDetection.Clients
 {

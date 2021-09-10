@@ -2,15 +2,19 @@
 	"folders": [
 		{
 			"name": "Lesson",
-			"path": "lessons/FraudDetection"
+			"path": "FraudDetection/lesson"
 		},
 		{
 			"name": "Source Code",
-			"path": "src/DurableFunctions.UseCases.FraudDetection"
+			"path": "FraudDetection/src"
 		},
 		{
 			"name": "Test",
-			"path": "tests/FraudDetection"
+			"path": "FraudDetection/tst"
+		},
+		{
+			"name": "Azurite",
+			"path": "FraudDetection/_azurite"
 		}
 	],
 	"settings": {

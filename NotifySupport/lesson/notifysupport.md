@@ -4,7 +4,7 @@
 
 The goal of this challenge is to write a Function App which responds to alerts (posted as HTTP request) and notifies members of the support team so they can investigate the issue.
 
-![Notify Support overview diagram](../diagrams/notifysupport_overview.png)
+![Notify Support overview diagram](notifysupport_overview.png)
 
 ### Recording
 
@@ -12,7 +12,7 @@ There is a [recording available on YouTube](https://youtu.be/O6YCRhyqR2w) which 
 
 ## Flow Diagram
 
-![Notify Support Flow diagram](../diagrams/notifysupport_functions1.png)
+![Notify Support Flow diagram](notifysupport_functions1.png)
 
 ## Prerequisites
 
@@ -22,17 +22,17 @@ Read the [prerequisites](prerequisites.md) to ensure you have all the right tool
 
 Please familiarize yourself with some Durable Functions theory and code samples. These are the building blocks for the solution.
 
-- [Client, Orchestrator & Activity functions](durablefunctions.md)
-- [Sub-orchestrations](suborchestrations.md)
-- [Events](events.md)
-- [Eternal orchestrations](eternalorchestrations.md)
-- [Stateful Entities](statefulentities.md)
+- [Client, Orchestrator & Activity functions](../../DurableFunctionsTheory/durablefunctions.md)
+- [Sub-orchestrations](../../DurableFunctionsTheory/suborchestrations.md)
+- [Events](../../DurableFunctionsTheory/events.md)
+- [Eternal orchestrations](../../DurableFunctionsTheory/eternalorchestrations.md)
+- [Stateful Entities](../../DurableFunctionsTheory/statefulentities.md)
 
 ## Requirements
 
 The serverless application you'll write, need to do the following things:
 
-1. Respond to an incoming HTTP POST request on a static URL (e.g. https://localhost:7071/api/NotifySupportHttpClient). The json body is as follows:
+1. Respond to an incoming HTTP POST request on a static URL (e.g. `https://localhost:7071/api/NotifySupportHttpClient`). The json body is as follows:
 
     ```json
     {
@@ -53,7 +53,7 @@ The serverless application you'll write, need to do the following things:
 
 5. Once a support contact responds with a callback the notification process should stop and no other contacts should be notified.
 
-6. The callback response is received as a POST request on a static URL (e.g. https://localhost:7071/api/CallbackHttpClient). The body of the request only contains the phone number of the support contact who was notified:
+6. The callback response is received as a POST request on a static URL (e.g. `https://localhost:7071/api/CallbackHttpClient`). The body of the request only contains the phone number of the support contact who was notified:
 
     ```json
     {
