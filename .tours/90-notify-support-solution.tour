@@ -1,6 +1,6 @@
 {
   "$schema": "https://aka.ms/codetour-schema",
-  "title": "99-Solution",
+  "title": "90 - Notify Support Solution",
   "steps": [
     {
       "file": "../NotifySupport/src/DurableFunctions.UseCases.NotifySupport/Models/NotifySupportClientInput.cs",
