@@ -3,14 +3,15 @@
   "title": "06 - Waiting for Events",
   "steps": [
     {
-      "file": "lessons/events.md",
+      "file": "../DurableFunctionsTheory/events.md",
       "description": "The `WaitForExternalEvent<T>` method is used to indicate the orchestrator function should wait before executing the rest of the workflow. In this case we expect to receive a boolean value for the event named *ApprovalEvent*.\r\n\r\n- The first parameter is the name of the event it should wait for.\r\n- The second parameter is a timeout value. If the event is not raised within this timeout the execution will continue.\r\n- The third parameter is the default value which is used when the wait event has timed out.",
       "line": 17
     },
     {
-      "file": "lessons/events.md",
+      "file": "../DurableFunctionsTheory/events.md",
       "description": "The result of an event can be used to allow different execution paths in the orchestrator code.",
       "line": 18
     }
-  ]
+  ],
+  "ref": "None"
 }

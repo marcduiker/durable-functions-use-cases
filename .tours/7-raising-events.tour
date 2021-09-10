@@ -3,7 +3,7 @@
   "title": "07 - Raising Events",
   "steps": [
     {
-      "file": "lessons/events.md",
+      "file": "../DurableFunctionsTheory/events.md",
       "description": "Use the `RaiseEventAsync` method on the `IDurableClient` interface to raise events to a specific orchestrator instance.",
       "line": 47,
       "selection": {
@@ -18,9 +18,10 @@
       }
     },
     {
-      "file": "lessons/events.md",
+      "file": "../DurableFunctionsTheory/events.md",
       "description": "- The first parameter is the instance ID of the orchestrator that is waiting for the event.\r\n- The second parameter is the name of the event that is raised.\r\n- The third parameter is the value of the event. This can be a simple type or a serializable POCO.",
       "line": 50
     }
-  ]
+  ],
+  "ref": "None"
 }

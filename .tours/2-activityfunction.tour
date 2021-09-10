@@ -3,15 +3,15 @@
   "title": "02 - Activity Function",
   "steps": [
     {
-      "file": "lessons/durablefunctions.md",
+      "file": "../DurableFunctionsTheory/durablefunctions.md",
       "description": "The `[ActivityTrigger]` is a binding that indicates the function is an activity function.\r\nThe input type can be a simple type or serializable POCO. \r\nActivity functions only support one input parameter.",
       "line": 62
     },
     {
-      "file": "lessons/durablefunctions.md",
+      "file": "../DurableFunctionsTheory/durablefunctions.md",
       "description": "There are no restrictions on what you can execute inside an activity function. Usually there is communication with other APIs and databases, or performing CPU intensive work.",
       "line": 65
     }
   ],
-  "ref": "main"
+  "ref": "None"
 }

@@ -3,7 +3,7 @@
   "title": "04 - Sub-orchestrations",
   "steps": [
     {
-      "file": "lessons/suborchestrations.md",
+      "file": "../DurableFunctionsTheory/suborchestrations.md",
       "description": "Use the `CallSubOrchestratorAsync<T>` method on the `IDurableOrchestrationContext` interface to call a sub-orchestrator. If the orchestrator returns a result, the output type needs to be specified as the generic parameter. Here an output of type `UserGameStats` is expected.",
       "line": 19,
       "selection": {
@@ -18,19 +18,20 @@
       }
     },
     {
-      "file": "lessons/suborchestrations.md",
+      "file": "../DurableFunctionsTheory/suborchestrations.md",
       "description": "The first parameter is the name of the orchestrator to start.",
       "line": 20
     },
     {
-      "file": "lessons/suborchestrations.md",
+      "file": "../DurableFunctionsTheory/suborchestrations.md",
       "description": "The second parameter is the input for the orchestrator. If no input is required a value of `null` can be used.",
       "line": 21
     },
     {
-      "file": "lessons/suborchestrations.md",
+      "file": "../DurableFunctionsTheory/suborchestrations.md",
       "description": "Here a sub-orchestrator is called that has no return value.",
       "line": 23
     }
-  ]
+  ],
+  "ref": "None"
 }

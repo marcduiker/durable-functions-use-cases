@@ -1,0 +1,39 @@
+{
+	"folders": [
+		{
+			"name": "Durable Functions Theory",
+			"path": "DurableFunctionsTheory"
+		},
+		{
+			"name": "Fraud Detection Challenge",
+			"path": "FraudDetection/challenge"
+		},
+		{
+			"name": "Source Code",
+			"path": "FraudDetection/src"
+		},
+		{
+			"name": "Test",
+			"path": "FraudDetection/tst"
+		},
+		{
+			"name": "(Azurite)",
+			"path": "FraudDetection/_azurite"
+		},
+		{
+			"name": "(Code Tour)",
+			"path": ".tours"
+		}
+	],
+	"settings": {
+		"debug.internalConsoleOptions": "neverOpen"
+	},
+	"extensions": {
+		"recommendations": [
+			"ms-azuretools.vscode-azurefunctions",
+			"ms-dotnettools.csharp",
+			"azurite.azurite",
+			"vsls-contrib.codetour"
+		  ]
+	}
+}

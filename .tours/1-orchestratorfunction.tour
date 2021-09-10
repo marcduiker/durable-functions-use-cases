@@ -3,7 +3,7 @@
   "title": "01 - Orchestrator Function",
   "steps": [
     {
-      "file": "lessons/durablefunctions.md",
+      "file": "Durable Functions Theory/durablefunctions.md",
       "description": "The `[OrchestrationTrigger]` is a binding that indicates this function is an orchestrator function.",
       "selection": {
         "start": {
@@ -18,7 +18,7 @@
       "line": 32
     },
     {
-      "file": "lessons/durablefunctions.md",
+      "file": "../DurableFunctionsTheory/durablefunctions.md",
       "description": "The `GetInput` method on `IDurableOrchestrationContext` is used to retrieve the input that is passed in when this orchestrator instance was started. In this case the expected input is of type `string`.",
       "selection": {
         "start": {
@@ -33,7 +33,7 @@
       "line": 35
     },
     {
-      "file": "lessons/durablefunctions.md",
+      "file": "../DurableFunctionsTheory/durablefunctions.md",
       "description": "Use `CallActivityAsync<T>` to schedule a call to an activity function. Here the output is expected to be of type `User`.",
       "line": 37,
       "selection": {
@@ -48,26 +48,26 @@
       }
     },
     {
-      "file": "lessons/durablefunctions.md",
+      "file": "../DurableFunctionsTheory/durablefunctions.md",
       "description": "The first argument is the name of the actvity function that is called.",
       "line": 38
     },
     {
-      "file": "lessons/durablefunctions.md",
+      "file": "../DurableFunctionsTheory/durablefunctions.md",
       "description": "The second argument is the input for the activity function. Activity functions only support one input parameter. ",
       "line": 39
     },
     {
-      "file": "lessons/durablefunctions.md",
+      "file": "../DurableFunctionsTheory/durablefunctions.md",
       "description": "Activity functions do not require an output parameter. When the activity output is `void` (or `Task` for async activities) no output type is required for the `CallActivityAsync` method.",
       "line": 41
     },
     {
-      "file": "lessons/durablefunctions.md",
+      "file": "../DurableFunctionsTheory/durablefunctions.md",
       "description": "Due to the replay functionality of the orchestrator function there are limits of what code is allowed inside an orchestrator. See [orchestrator code constraints](https://docs.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-code-constraints) for additional info.",
       "line": 44
     }
   ],
-  "ref": "main",
+  "ref": "None",
   "isPrimary": true
 }

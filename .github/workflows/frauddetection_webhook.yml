@@ -1,0 +1,38 @@
+name: FraudDetection
+
+on:
+  workflow_dispatch:
+    inputs:
+      recordId:
+        description: 'ID of the transaction'
+        required: true
+        default: '12345'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call function webhook
+        run: |
+          if [ $RANDOM%2==0 ] 
+          then
+            SUSPICIOUS='true'
+          else
+            SUSPICIOUS='false'
+          fi
+          CODE=`curl --write-out '%{http_code}' \
+          --silent \
+          --output /dev/null \
+          --request POST \
+          --header 'content-type: application/json' \
+          --url '${{ secrets.FRAUDDETECTION_WEBHOOK }}' \
+          --data '{ \
+          "recordId": "${{ github.event.inputs.recordId }}", \
+          "isSuspiciousTransaction": '$SUSPICIOUS' \
+          }'`
+          if [ $CODE!="202" ] 
+          then
+            echo 1
+          else
+            echo 0
+          fi

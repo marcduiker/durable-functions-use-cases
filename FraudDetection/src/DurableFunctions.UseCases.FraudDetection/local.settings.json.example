@@ -1,0 +1,13 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "TaskHubName" : "FraudDetectionV1",
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "GitHubWebhookSecret" : "",
+    "GitHubWebhookPAT" : "",
+    "GitHubWorkflowFile": "frauddetection_webhook.yml",
+    "GitHubOwner": "marcduiker",
+    "GitHubRepoName": "durable-functions-use-cases"
+  }
+}
