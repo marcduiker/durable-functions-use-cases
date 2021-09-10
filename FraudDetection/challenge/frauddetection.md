@@ -43,8 +43,17 @@ The serverless application you'll write, need to do the following things:
 
     > For more info about *Azure Functions HttpTriggers* see this [Azure Functions University lesson](https://github.com/marcduiker/azure-functions-university/blob/main/lessons/http-dotnet.md).
 
-2. The function should call a 3rd party web service that performs a fraud detection analysis on the transaction. This service does not return the analysis result immediate, it will only send back an Accepted HTTP status (202). Once the result is ready, the web service wil trigger a webhook with the result in the body. This webhook will be another HTTP triggered function in your Function App.
+2. Call a 3rd party web service that performs a fraud detection analysis on the transaction. This service does not return the analysis result immediate, it will only send back an Accepted HTTP status (202). Once the result is ready, the web service wil trigger a webhook with the result in the body (see step 3).
 
     > For this challenge I don't expect you to use a real fraud detection service. You can either make a call to some other service (e.g [webhook.site](https://webhook.site/) and trigger the 'webhook' yourself via a REST client. Or you can follow [my example](../src/DurableFunctions.UseCases.FraudDetection/Activities/AnalyzeAuditRecordActivity.cs) and make a call to GitHub, that starts a [workflow](../../.github/workflows/frauddetection_webhook.yml) which makes the webhook call back to your Function App.
 
-3. 
+3. Expose an HTTP trigger function on a static URL (e.g. `http://localhost:7071/api/FraudResultWebhookClient`) that is used as the webhook in step 2. This endpoint should only allow POST requests and the request body is expected to contain the following payload:
+
+    ```json
+    {
+        "recordId": "<string ID of the record that has been submitted for analysis>",
+        "isSuspiciousTransaction":  "<boolean result>"
+    }
+    ```
+
+4. 
