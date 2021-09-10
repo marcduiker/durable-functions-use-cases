@@ -10,7 +10,7 @@ Write a Function App that responds to alerts and notifies members of a support t
 
 ![Notify Support overview diagram](/NotifySupport/challenge/notifysupport_overview.png)
 
-This challenge combines sub-orchestrations, eternal orchestrations, waiting for external events, and using stateful entities.
+This challenge combines sub-orchestrations, eternal orchestrations, webhooks, waiting for external events, and using stateful entities.
 
 Go to the [Notify Support Challenge](/NotifySupport/challenge/notifysupport.md).
 
@@ -20,6 +20,6 @@ Write a Function App that takes in financial transactions, calls a web service t
 
 ![Fraud Detection overview diagram](/FraudDetection/challenge/frauddetection_overview.png)
 
-This challenge combines orchestrations, waiting for external events, and stateful entities.
+This challenge combines orchestrations, webhooks, waiting for external events, and stateful entities.
 
 Go to the [Fraud Detection Challenge](FraudDetection/challenge/frauddetection.md).
