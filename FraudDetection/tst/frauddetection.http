@@ -15,24 +15,3 @@ Content-Type: application/json
 @orchestratorId = {{fraudDetectionRequest.response.body.$.id}}
 GET http://localhost:7071/runtime/webhooks/durabletask/instances/{{orchestratorId}}
     ?taskHub=FraudDetectionV1
-
-### Send webhook event
-
-http://75ca-80-101-236-150.ngrok.io/api/FraudResultWebhookClient
-
-### Dispatch Workflow
-@token=
-@repoOwner=marcduiker
-@repoName=webhook-playground
-@workflowFile=frauddetection_webhook.yml
-POST https://api.github.com/repos/{{repoOwner}}/{{repoName}}/actions/workflows/{{workflowFile}}/dispatches
-Authorization: Basic {{token}}
-Accept: application/vnd.github.v3+json
-Content-Type: application/json
-
-{
-    "ref": "main",
-    "inputs": {
-        "recordId": "123"
-    }
-}
