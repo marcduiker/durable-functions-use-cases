@@ -1,4 +1,4 @@
-# Durable Functions Use Cases
+# Durable Functions Challenges
 
 In this repository, I'll collect some real-life challenges you can solve using Azure Functions & Durable Functions.
 
