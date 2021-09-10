@@ -9,6 +9,10 @@
 			"path": "NotifySupport/challenge"
 		},
 		{
+			"name": "Table Storage Sample Data",
+			"path": "NotifySupport/data"
+		},
+		{
 			"name": "Source Code",
 			"path": "NotifySupport/src"
 		},
