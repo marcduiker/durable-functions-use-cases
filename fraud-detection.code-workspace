@@ -1,8 +1,12 @@
 {
 	"folders": [
 		{
-			"name": "Lesson",
-			"path": "FraudDetection/lesson"
+			"name": "Durable Functions Theory",
+			"path": "DurableFunctionsTheory"
+		},
+		{
+			"name": "Fraud Detection Challenge",
+			"path": "FraudDetection/challenge"
 		},
 		{
 			"name": "Source Code",
@@ -13,8 +17,12 @@
 			"path": "FraudDetection/tst"
 		},
 		{
-			"name": "Azurite",
+			"name": "(Azurite)",
 			"path": "FraudDetection/_azurite"
+		},
+		{
+			"name": "(Code Tour)",
+			"path": ".tours"
 		}
 	],
 	"settings": {

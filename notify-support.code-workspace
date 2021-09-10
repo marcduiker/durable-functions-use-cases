@@ -1,0 +1,39 @@
+{
+	"folders": [
+		{
+			"name": "Durable Functions Theory",
+			"path": "DurableFunctionsTheory"
+		},
+		{
+			"name": "Notify Support Challenge",
+			"path": "NotifySupport/challenge"
+		},
+		{
+			"name": "Source Code",
+			"path": "NotifySupport/src"
+		},
+		{
+			"name": "Test",
+			"path": "NotifySupport/tst"
+		},
+		{
+			"name": "(Azurite)",
+			"path": "NotifySupport/_azurite"
+		},
+		{
+			"name": "(Code Tour)",
+			"path": ".tours"
+		}
+	],
+	"settings": {
+		"debug.internalConsoleOptions": "neverOpen"
+	},
+	"extensions": {
+		"recommendations": [
+			"ms-azuretools.vscode-azurefunctions",
+			"ms-dotnettools.csharp",
+			"azurite.azurite",
+			"vsls-contrib.codetour"
+		  ]
+	}
+}

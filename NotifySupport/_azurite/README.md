@@ -1,0 +1,1 @@
+Use this folder for the Azurite files when you use the [VSCode Azurite extension](https://marketplace.visualstudio.com/items?itemName=Azurite.azurite).

@@ -3,7 +3,7 @@
   "title": "08 - Entity Definition",
   "steps": [
     {
-      "file": "lessons/statefulentities.md",
+      "file": "../DurableFunctionsTheory/statefulentities.md",
       "description": "This entity is created as a class based definition. It it recommended to use the `[JsonObject(MemberSerialization.OptIn)]` attribute and explicitly specify the members of this class that require to be serialized and stored.",
       "line": 13,
       "selection": {
@@ -18,7 +18,7 @@
       }
     },
     {
-      "file": "lessons/statefulentities.md",
+      "file": "../DurableFunctionsTheory/statefulentities.md",
       "description": "The `PlayerScoreEntity` has a Score property which is the only member that is serialized/stored. Updating this property is done via methods on the entity.",
       "line": 16,
       "selection": {
@@ -33,17 +33,17 @@
       }
     },
     {
-      "file": "lessons/statefulentities.md",
+      "file": "../DurableFunctionsTheory/statefulentities.md",
       "description": "The `Set` method updates the `Score` property with the supplied value.",
       "line": 18
     },
     {
-      "file": "lessons/statefulentities.md",
+      "file": "../DurableFunctionsTheory/statefulentities.md",
       "description": "The `Reset` method sets the `Score` to 0.",
       "line": 20
     },
     {
-      "file": "lessons/statefulentities.md",
+      "file": "../DurableFunctionsTheory/statefulentities.md",
       "description": "The `[EntityTrigger]` binding defines this function is an entity function.",
       "line": 24,
       "selection": {
@@ -58,9 +58,10 @@
       }
     },
     {
-      "file": "lessons/statefulentities.md",
+      "file": "../DurableFunctionsTheory/statefulentities.md",
       "description": "The `DispatchAsync<T>` method in the `IDurableEntityContext` interface dispatches the incoming entity operation using reflection.",
       "line": 25
     }
-  ]
+  ],
+  "ref": "None"
 }

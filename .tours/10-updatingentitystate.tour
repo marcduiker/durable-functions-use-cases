@@ -3,29 +3,30 @@
   "title": "10 - Updating Entity State",
   "steps": [
     {
-      "file": "lessons/statefulentities.md",
+      "file": "../DurableFunctionsTheory/statefulentities.md",
       "description": "First a new `EntityId` is created based on the `PlayerScoreEntity` class name and the player name.",
       "line": 68
     },
     {
-      "file": "lessons/statefulentities.md",
+      "file": "../DurableFunctionsTheory/statefulentities.md",
       "description": "The `SignalEntity` method on the `IDurableOrchestrationContext` interface is used to signal (one way communication) to the `PlayerScoreEntity` instance.",
       "line": 69
     },
     {
-      "file": "lessons/statefulentities.md",
+      "file": "../DurableFunctionsTheory/statefulentities.md",
       "description": "The first parameter is the entity ID.",
       "line": 70
     },
     {
-      "file": "lessons/statefulentities.md",
+      "file": "../DurableFunctionsTheory/statefulentities.md",
       "description": "The second parameter is the name of the operation that will be signalled. Here the `Set` method will be signalled.",
       "line": 71
     },
     {
-      "file": "lessons/statefulentities.md",
+      "file": "../DurableFunctionsTheory/statefulentities.md",
       "description": "The third parameter is the value that is passed to the signalled method. In this case the player score is sent to the entity.",
       "line": 72
     }
-  ]
+  ],
+  "ref": "None"
 }
