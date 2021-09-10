@@ -13,7 +13,7 @@ namespace DurableFunctions.UseCases.FraudDetection.Application
         public override void Configure(IFunctionsHostBuilder builder)
         {
             builder.Services.AddSingleton<ICustomerDataService, FakeCustomerDataService>();
-            builder.Services.AddSingleton<AuthHandler>();
+            builder.Services.AddTransient<AuthHandler>();
             builder.Services.AddRefitClient<IFraudAnalysisService>(new RefitSettings
                 {
                     ContentSerializer = new NewtonsoftJsonContentSerializer(
