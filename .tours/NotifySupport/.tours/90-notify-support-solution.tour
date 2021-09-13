@@ -3,7 +3,7 @@
   "title": "90 - Notify Support Solution",
   "steps": [
     {
-      "file": "../NotifySupport/src/DurableFunctions.UseCases.NotifySupport/Models/NotifySupportClientInput.cs",
+      "file": "../../NotifySupport/src/DurableFunctions.UseCases.NotifySupport/Models/NotifySupportClientInput.cs",
       "description": "The `NotifySupportClientInput` class is used as the payload when triggering the `NotifySupportHttpClient` function. It only contains a message (string) and a severity (int) related to the alert.",
       "line": 3,
       "selection": {
@@ -19,7 +19,7 @@
       "title": "NotifySupportClientInput"
     },
     {
-      "file": "../NotifySupport/src/DurableFunctions.UseCases.NotifySupport/Clients/NotifySupportHttpClient.cs",
+      "file": "./NotifySupport/src/DurableFunctions.UseCases.NotifySupport/Clients/NotifySupportHttpClient.cs",
       "description": "An `HttpTrigger` function is used to act as the client function. This function will start a new instance of the `NotifySupportOrchestrator` function, the main orchestrator.\r\n\r\nThe `[DurableClient]` binding indicates this is a Durable Client function.",
       "line": 19,
       "selection": {
