@@ -25,8 +25,12 @@
 			"path": "NotifySupport/_azurite"
 		},
 		{
-			"name": "(Code Tour)",
-			"path": ".tours"
+			"name": "(Code Tour Notify Support)",
+			"path": ".tours/NotifySupport"
+		},
+		{
+			"name": "(Code Tours Durable Functions Theory)",
+			"path": ".tours/DurableFunctionsTheory"
 		}
 	],
 	"settings": {

@@ -3,22 +3,22 @@
   "title": "03 - Client Function",
   "steps": [
     {
-      "file": "../DurableFunctionsTheory/durablefunctions.md",
+      "file": "../../DurableFunctionsTheory/durablefunctions.md",
       "description": "The `[DurableClient]` binding indicates this function is a client function.",
       "line": 82
     },
     {
-      "file": "../DurableFunctionsTheory/durablefunctions.md",
+      "file": "../../DurableFunctionsTheory/durablefunctions.md",
       "description": "The `IDurableClient` client context contains methods to manage orchestrator functions. In this case the `StartNewAsync` method is used to start a new instance of the `UpdateUserScoreOrchestrator` orchestrator function.",
       "line": 87
     },
     {
-      "file": "../DurableFunctionsTheory/durablefunctions.md",
+      "file": "../../DurableFunctionsTheory/durablefunctions.md",
       "description": "The first parameter of `StartNewAsync` is the name of the orchestrator function to be started.",
       "line": 88
     },
     {
-      "file": "../DurableFunctionsTheory/durablefunctions.md",
+      "file": "../../DurableFunctionsTheory/durablefunctions.md",
       "description": "The second parameter of `StartNewAsync` is the input for the orchestrator.",
       "line": 89
     }
