@@ -17,6 +17,10 @@
 			"path": "FraudDetection/tst"
 		},
 		{
+			"name": "GitHub Workflow",
+			"path": ".github/workflows"
+		},
+		{
 			"name": "(Azurite)",
 			"path": "FraudDetection/_azurite"
 		},
