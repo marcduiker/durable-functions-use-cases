@@ -12,6 +12,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Pretend to be busy
+        uses: kibertoad/wait-action@1.0.1
+        with:
+          time: '30s'
       - name: Call function webhook
         run: |
           if [ $RANDOM%2==0 ] 
