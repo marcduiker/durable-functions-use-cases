@@ -2,7 +2,7 @@
 
 Eternal orchestrators are orchestrators that never finish. They are useful when you want to perform a workflow in a loop.
 
-![Eternal Orchestrations](../diagrams/eternal_orchestrations.png)
+![Eternal Orchestrations](diagrams/eternal_orchestrations.png)
 
 You can make a conditional eternal orchestrator that only continues the orchestrator inside an `if statement` based on logic you provide (e.g. a result of an activity, sub-orchestrator, or event).
 

@@ -18,7 +18,7 @@ Durable Functions uses four types of functions:
 - Activity functions
 - Entity functions
 
-![Durable Function Types](../diagrams/durablefunction_types.png)
+![Durable Function Types](diagrams/durablefunction_types.png)
 
 ### Orchestrator Functions
 
@@ -46,7 +46,7 @@ public async Task Run(
 
 #### Orchestrator Replay
 
-![Orchestrator Replay](../diagrams/orchestrator_replay.png)
+![Orchestrator Replay](diagrams/orchestrator_replay.png)
 
 It is important to realize that an orchestrator function is not executed once. It is replayed several times, depending on the number of activities it calls. For each activity the orchestrator calls, the orchestrator execution is stopped. As soon as an activity is done, the orchestrator restarts. Since the state of the orchestrator instance is persisted (including the inputs and outputs of activity functions) it won't execute activity functions multiple times. The Durable Functions framework checks if the activity function has been executed and if so, it will retrieve the state to use that in the orchestrator.
 

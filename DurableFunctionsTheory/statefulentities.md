@@ -2,7 +2,7 @@
 
 Entity functions allow you to read and write small pieces of state, known as stateful entities. Entities can be accessed from client functions and orchestrator functions.
 
-![Stateful Entities](../diagrams/stateful_entities.png)
+![Stateful Entities](diagrams/stateful_entities.png)
 
 ## Entity Definition
 

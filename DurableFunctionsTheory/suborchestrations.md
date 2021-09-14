@@ -2,7 +2,7 @@
 
 Orchestrator functions can also call other orchestrator functions (sub-orchestrators).
 
-![Sub-orchestrations](../diagrams/sub-orchestrators.png)
+![Sub-orchestrations](diagrams/sub-orchestrators.png)
 
 This enables re-use of orchestrators, and keeping them small and maintainable. Just like activity functions, sub-orchestrators can be chained, or executed in parallel.
 
