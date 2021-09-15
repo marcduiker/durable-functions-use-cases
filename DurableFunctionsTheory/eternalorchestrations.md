@@ -34,4 +34,4 @@ public static async Task Run(
 [Eternal orchestrations in Durable Functions](https://docs.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-eternal-orchestrations?tabs=csharp)
 
 ---
-[◀ Sub-orchestrations](suborchestrations.md) | [🔼 Notify Support Challenge](../NotifySupport/lesson/notifysupport.md) | [Events ▶](events.md)
+[◀ Sub-orchestrations](suborchestrations.md) | [🔼 Notify Support Challenge](../NotifySupport/challenge/README.md) | [🔼 Fraud Detection Challenge](../FraudDetection/challenge/README.md) | [Events ▶](events.md)
