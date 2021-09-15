@@ -65,4 +65,4 @@ The following requirements have been defined for the  serverless application you
     }
     ```
 
-5. Finally the Function App should store the `AuditResult` in CosmosDB.
+5. When `isSuspiciousTransaction` is `true`, the Function App should store the `AuditResult` (including the `IsSuspiciousTransaction` property) in a document collection (*auditrecords*) in a CosmosDB database (*frauddetection*).
