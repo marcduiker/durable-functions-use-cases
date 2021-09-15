@@ -30,7 +30,8 @@
 		}
 	],
 	"settings": {
-		"debug.internalConsoleOptions": "neverOpen"
+		"debug.internalConsoleOptions": "neverOpen",
+		"azureFunctions.pickProcessTimeout" : 120,
 	},
 	"extensions": {
 		"recommendations": [

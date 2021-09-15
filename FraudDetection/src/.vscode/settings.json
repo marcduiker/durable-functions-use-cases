@@ -3,6 +3,7 @@
     "azureFunctions.projectLanguage": "C#",
     "azureFunctions.projectRuntime": "~3",
     "debug.internalConsoleOptions": "neverOpen",
+    "azureFunctions.pickProcessTimeout" : 120,
     "azureFunctions.preDeployTask": "publish",
     "cSpell.ignoreWords": [
         "durablefunctions",
