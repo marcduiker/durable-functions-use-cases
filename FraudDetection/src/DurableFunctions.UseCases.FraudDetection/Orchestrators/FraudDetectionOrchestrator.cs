@@ -29,7 +29,7 @@ namespace DurableFunctions.UseCases.FraudDetection
 
             // Create an entity based on the record Id to store the current orchestration Id.
             var entityId = new EntityId(
-                nameof(FraudDetectionOrchestratorEntity), 
+                nameof(FraudDetectionOrchestratorEntity),
                 auditRecord.Id);
             context.SignalEntity(
                 entityId,
@@ -39,19 +39,21 @@ namespace DurableFunctions.UseCases.FraudDetection
             await context.CallActivityAsync(
                 nameof(AnalyzeAuditRecordActivity),
                 auditRecord);
-            
+
             var timeOut = TimeSpan.FromMinutes(5);
             var defaultResult = true;
             var isSuspiciousTransaction = await context.WaitForExternalEvent<bool>(
                 Constants.FraudResultCompletedEvent,
                 timeOut,
                 defaultResult);
-
             auditRecord.IsSuspiciousTransaction = isSuspiciousTransaction;
 
-            await context.CallActivityAsync(
-                nameof(StoreAuditRecordActivity),
-                auditRecord);
+            if (auditRecord.IsSuspiciousTransaction)
+            {
+                await context.CallActivityAsync(
+                    nameof(StoreAuditRecordActivity),
+                    auditRecord);
+            }
         }
 
         private async Task<(Customer Creditor, Customer Debtor)> GetCustomersForTransactionAsync(
@@ -67,7 +69,7 @@ namespace DurableFunctions.UseCases.FraudDetection
                 transaction.DebtorBankAccount);
 
             await Task.WhenAll(creditorTask, debtorTask);
-            
+
             return (creditorTask.Result, debtorTask.Result);
         }
     }
