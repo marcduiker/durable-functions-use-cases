@@ -27,10 +27,12 @@ jobs:
         pushd './NotifySupport/src/DurableFunctions.UseCases.NotifySupport'
         dotnet build --configuration Release --output ./output
         popd
-    - name: 'Build Fraud Detection Function App'
-      shell: bash
-      run: |
-        pushd './FraudDetection/src/DurableFunctions.UseCases.FraudDetection'
-        dotnet build --configuration Release --output ./output
-        popd
+
+    # Currently fails due to a MSBuild 16.8.0 dependency of Refit.
+    # - name: 'Build Fraud Detection Function App'
+    #   shell: bash
+    #   run: |
+    #     pushd './FraudDetection/src/DurableFunctions.UseCases.FraudDetection'
+    #     dotnet build --configuration Release --output ./output
+    #     popd
 
