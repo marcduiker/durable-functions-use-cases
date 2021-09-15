@@ -1,15 +1,15 @@
-name: '.NET Core 3.1 builds'
+name: '.NET builds'
 on:
   pull_request:
       types: [opened, edited, synchronize, reopened]
       paths:
         - 'FraudDetection/src/**'
         - 'NotifySupport/src/**'
-        - '.github/workflows/dotnetcore31.yml'
+        - '.github/workflows/dotnet.yml'
   workflow_dispatch:
 
 env:
-  DOTNET_VERSION: '3.1.x'
+  DOTNET_VERSION: '5.0.x'
 
 jobs:
   Application:
@@ -27,7 +27,7 @@ jobs:
         pushd './NotifySupport/src/DurableFunctions.UseCases.NotifySupport'
         dotnet build --configuration Release --output ./output
         popd
-    - name: 'Build Notify Support Function App'
+    - name: 'Build Fraud Detection Function App'
       shell: bash
       run: |
         pushd './FraudDetection/src/DurableFunctions.UseCases.FraudDetection'
