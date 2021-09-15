@@ -10,11 +10,11 @@ The goal of this challenge is to write a Function App that:
 - waits for the analysis result to be returned via a webhook,
 - stores the combined data and analysis result to CosmosDB.
 
-![Fraud Detection overview diagram](frauddetection_overview.png)
+![Fraud Detection overview diagram](diagrams/frauddetection_overview.png)
 
 ## Flow Diagram
 
-![Fraud Detection Flow diagram](frauddetection_functions1.png)
+![Fraud Detection Flow diagram](diagrams/frauddetection_functions1.png)
 
 ## Prerequisites
 
