@@ -1,0 +1,38 @@
+name: '.NET builds'
+on:
+  pull_request:
+      types: [opened, edited, synchronize, reopened]
+      paths:
+        - 'FraudDetection/src/**'
+        - 'NotifySupport/src/**'
+        - '.github/workflows/dotnet.yml'
+  workflow_dispatch:
+
+env:
+  DOTNET_VERSION: '3.1.x'
+
+jobs:
+  Application:
+    runs-on: ubuntu-latest
+    steps:
+    - name: 'Checkout GitHub Action'
+      uses: actions/checkout@main
+    - name: Setup .NET ${{ env.DOTNET_VERSION }} Environment
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+    - name: 'Build Notify Support Function App'
+      shell: bash
+      run: |
+        pushd './NotifySupport/src/DurableFunctions.UseCases.NotifySupport'
+        dotnet build --configuration Release --output ./output
+        popd
+
+    # Currently fails due to a MSBuild 16.8.0 dependency of Refit.
+    # - name: 'Build Fraud Detection Function App'
+    #   shell: bash
+    #   run: |
+    #     pushd './FraudDetection/src/DurableFunctions.UseCases.FraudDetection'
+    #     dotnet build --configuration Release --output ./output
+    #     popd
+

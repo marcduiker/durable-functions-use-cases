@@ -61,4 +61,4 @@ Besides using the .NET API, events can also be raised using the [built-in HTTP A
 [Handling external events in Durable Functions](https://docs.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-external-events?tabs=csharp)
 
 ---
-[◀ Eternal Orchestrations](eternalorchestrations.md) | [🔼 Notify Support Challenge](../NotifySupport/lesson/notifysupport.md) | [Stateful Entities ▶](statefulentities.md)
+[◀ Eternal Orchestrations](eternalorchestrations.md) | [🔼 Notify Support Challenge](../NotifySupport/challenge/README.md) | [🔼 Fraud Detection Challenge](../FraudDetection/challenge/README.md) | [Stateful Entities ▶](statefulentities.md)
