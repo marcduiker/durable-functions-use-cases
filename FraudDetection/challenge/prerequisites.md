@@ -44,4 +44,4 @@ Create a new folder (local git repository) and use the repository you're current
 You should be good to go now!
 
 ---
-[🔼 Main README](../../README.md) | [Fraud Detection Challenge ▶](frauddetection.md)
+[🔼 Main README](../../README.md) | [Fraud Detection Challenge ▶](README.md)

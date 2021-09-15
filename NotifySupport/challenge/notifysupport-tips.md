@@ -1,6 +1,6 @@
 # Tips for building the Notify Support solution
 
-![](notifysupport_functions2.png)
+![](diagrams/notifysupport_functions2.png)
 
 ## Main orchestrator
 
@@ -24,4 +24,4 @@ For more info read:
 Create an HttpTrigger client function to handle the callback and raise the event. When the callback is received, the only information we have is a phone number. The sub-orchestrator is waiting for the callback event, and that event should be raised to that specific sub-orchestrator instance. But we don't have the instance ID of the orchestrator in the callback request. A solution for this is to use Stateful Entities to store the instance ID when the notification is sent, and to read the instance ID when we receive the callback. Use the phone number as entity key.
 
 ---
-[🔼 Notify Support Challenge](notifysupport.md)
+[🔼 Notify Support Challenge](README.md)
