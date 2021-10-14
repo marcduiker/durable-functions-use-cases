@@ -10,7 +10,7 @@
     <PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.1.0"/>
     <PackageReference Include="Bogus" Version="33.1.1"/>
     <PackageReference Include="Octokit" Version="0.50.0"/>
-    <PackageReference Include="Refit" Version="6.0.94"/>
+    <PackageReference Include="Refit" Version="6.1.15"/>
     <PackageReference Include="Refit.HttpClientFactory" Version="6.0.94"/>
     <PackageReference Include="Refit.Newtonsoft.Json" Version="6.0.94"/>
   </ItemGroup>
