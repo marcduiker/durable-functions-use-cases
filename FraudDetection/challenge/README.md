@@ -47,7 +47,7 @@ The following requirements have been defined for the  serverless application you
 
      > This json example uses the [VS Code REST client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) extension to generate random values.
 
-    > For more info about *Azure Functions HttpTriggers* see this [Azure Functions University lesson](https://github.com/marcduiker/azure-functions-university/blob/main/lessons/dotnetcore31/http/http-lesson-dotnet.md).
+    > For more info about *Azure Functions HttpTriggers* see this [Azure Functions University lesson](https://github.com/marcduiker/azure-functions-university/blob/main/lessons/dotnetcore31/http/README.md).
 2. The transaction contains bank accounts but no customer data (like names or country codes) that is required by the fraud detection service. The Function App should call a service to retrieve customer data for both the creditor and the debtor based on the bank account number from the transaction. This service returns a [`Customer`(link)](../src/DurableFunctions.UseCases.FraudDetection/Models/Customer.cs) object.
 
     > For this challenge I don't expect you to use a real customer data service. You can use my approach and have an activity function call a [FakeCustomerDataService](../src/DurableFunctions.UseCases.FraudDetection/Services/FakeCustomerDataService.cs) that generates customer data based on [Bogus](https://github.com/bchavez/Bogus).
