@@ -6,7 +6,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="3.1.1"/>
     <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.DurableTask" Version="2.7.2"/>
-    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.CosmosDB" Version="3.0.10"/>
+    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.CosmosDB" Version="4.2.0"/>
     <PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.1.0"/>
     <PackageReference Include="Bogus" Version="34.0.2"/>
     <PackageReference Include="Octokit" Version="2.0.1"/>
